@@ -1,0 +1,12 @@
+<section id="clients" class="py-20 bg-white section-animate">
+  <div class="max-w-screen-xl mx-auto px-4">
+    <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-6 animate-slide-up">Han confiado en nosotros</h2>
+    <div class="mt-16 overflow-x-auto">
+      <div class="flex items-center justify-center gap-12">
+        {Array.from({ length: 6 }).map((_, index) => (
+          <img key={index} src="https://via.placeholder.com/150x80?text=Logo" alt="Logo" class={`h-20 w-auto flex-shrink-0 opacity-70 hover:opacity-100 transition-opacity animate-fade-scale animate-delay-${index + 1}`} />
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
