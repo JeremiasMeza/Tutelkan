@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-/* Animations for section reveal */
 .fade-section {
   opacity: 0;
   transform: translateY(20px);

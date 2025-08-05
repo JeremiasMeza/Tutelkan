@@ -36,7 +36,7 @@ import '../styles/home.css';
           entry.target.classList.remove('section-hidden');
           const animatedElements = entry.target.querySelectorAll('[class*="animate-"]');
           animatedElements.forEach(el => {
-            el.style.animationPlayState = 'running';
+            (el as HTMLElement).style.animationPlayState = 'running';
           });
           if (entry.target.querySelector('.counter')) {
             startCounters();
@@ -51,8 +51,9 @@ import '../styles/home.css';
     function startCounters() {
       const counters = document.querySelectorAll('.counter');
       counters.forEach(counter => {
-        if (counter.dataset.animated) return;
-        const target = parseInt(counter.dataset.target);
+        const htmlCounter = counter as HTMLElement;
+        if (htmlCounter.dataset.animated) return;
+        const target = parseInt(htmlCounter.dataset.target || '0');
         const duration = 2000;
         const increment = target / (duration / 16);
         let current = 0;
@@ -65,23 +66,23 @@ import '../styles/home.css';
             counter.textContent = target.toLocaleString();
           }
         };
-        counter.dataset.animated = 'true';
+        htmlCounter.dataset.animated = 'true';
         updateCounter();
       });
     }
     document.querySelectorAll('[class*="animate-"]').forEach(el => {
-      el.style.animationPlayState = 'paused';
+      (el as HTMLElement).style.animationPlayState = 'paused';
     });
     window.addEventListener('load', () => {
       const heroElements = document.querySelectorAll('#home [class*="animate-"]');
       heroElements.forEach(el => {
-        el.style.animationPlayState = 'running';
+        (el as HTMLElement).style.animationPlayState = 'running';
       });
     });
     document.addEventListener('DOMContentLoaded', () => {
       const heroElements = document.querySelectorAll('#home [class*="animate-"]');
       heroElements.forEach(el => {
-        el.style.animationPlayState = 'running';
+        (el as HTMLElement).style.animationPlayState = 'running';
       });
     });
   </script>
