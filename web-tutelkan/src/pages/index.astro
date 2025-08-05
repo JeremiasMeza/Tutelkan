@@ -4,27 +4,39 @@ import Layout from '../layouts/Layout.astro';
 const services = [
   {
     title: 'Desarrollo de Software a Medida',
-    description: 'La personalización es la esencia de la innovación. En Tutelkan, diseñamos soluciones de software únicas, pensadas para impulsar la innovación y eficiencia en tu empresa, delineando el camino hacia un futuro tecnológicamente avanzado.'
+    description: 'La personalización es la esencia de la innovación. En Tutelkan, diseñamos soluciones de software únicas, pensadas para impulsar la innovación y eficiencia en tu empresa, delineando el camino hacia un futuro tecnológicamente avanzado.',
+    icon: '</>',
+    bgColor: 'bg-gray-200'
   },
   {
     title: 'Soluciones de Automatización Industrial',
-    description: 'Implementamos soluciones de automatización que no solo optimizan tus operaciones industriales, sino que también mejoran la seguridad y la eficiencia, preparando tu empresa para el futuro de la Industria 4.0.'
+    description: 'Implementamos soluciones de automatización que no solo optimizan tus operaciones industriales, sino que también mejoran la seguridad y la eficiencia, preparando tu empresa para el futuro de la Industria 4.0.',
+    icon: '⚙️',
+    bgColor: 'bg-gray-200'
   },
   {
     title: 'Aplicaciones Móviles y Web en Tiempo Real',
-    description: 'Desarrollamos aplicaciones móviles y web que proporcionan monitoreo y control en tiempo real, permitiendo una respuesta rápida y decisiones basadas en datos.'
+    description: 'Desarrollamos aplicaciones móviles y web que proporcionan monitoreo y control en tiempo real, permitiendo una respuesta rápida y decisiones basadas en datos.',
+    icon: '📱',
+    bgColor: 'bg-gray-200'
   },
   {
     title: 'Integraciones de Sistemas Empresariales y de Planta',
-    description: 'Facilitamos la cohesión en tu empresa, integrando eficientemente sistemas ERP, legados e interfaces de piso de planta, uniendo todas las áreas de tu negocio para una operatividad sinérgica y optimizada.'
+    description: 'Facilitamos la cohesión en tu empresa, integrando eficientemente sistemas ERP, legados e interfaces de piso de planta, uniendo todas las áreas de tu negocio para una operatividad sinérgica y optimizada.',
+    icon: '🧩',
+    bgColor: 'bg-gray-200'
   },
   {
     title: 'Consultoría en Innovación Tecnológica',
-    description: 'Brindamos consultoría experta para ayudarte a identificar y aplicar las soluciones tecnológicas más innovadoras en tu sector, asegurando que tu empresa esté siempre a la vanguardia.'
+    description: 'Brindamos consultoría experta para ayudarte a identificar y aplicar las soluciones tecnológicas más innovadoras en tu sector, asegurando que tu empresa esté siempre a la vanguardia.',
+    icon: '👤',
+    bgColor: 'bg-gray-200'
   },
   {
     title: 'Mantenimiento y Soporte Técnico',
-    description: 'Ofrecemos servicios de mantenimiento y soporte técnico de alta calidad, garantizando que tus sistemas estén siempre funcionando a su máxima capacidad, y ayudándote a resolver cualquier problema que pueda surgir de manera eficiente.'
+    description: 'Ofrecemos servicios de mantenimiento y soporte técnico de alta calidad, garantizando que tus sistemas estén siempre funcionando a su máxima capacidad, y ayudándote a resolver cualquier problema que pueda surgir de manera eficiente.',
+    icon: '🛟',
+    bgColor: 'bg-gray-200'
   }
 ];
 
@@ -46,32 +58,130 @@ const faqs = [
   { question: '¿Trabajan con empresas pequeñas?', answer: 'Sí, adaptamos nuestras soluciones a cualquier tamaño de empresa.' }
 ];
 ---
+
 <Layout title="Inicio">
+  <style>
+    /* Animaciones CSS */
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-100px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(100px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .animate-slide-left {
+      animation: slideInLeft 0.8s ease-out forwards;
+      opacity: 0;
+    }
+
+    .animate-slide-right {
+      animation: slideInRight 0.8s ease-out forwards;
+      opacity: 0;
+    }
+
+    .animate-slide-up {
+      animation: slideInUp 0.6s ease-out forwards;
+      opacity: 0;
+    }
+
+    .animate-fade-scale {
+      animation: fadeInScale 0.6s ease-out forwards;
+      opacity: 0;
+    }
+
+    .animate-delay-1 { animation-delay: 0.1s; }
+    .animate-delay-2 { animation-delay: 0.2s; }
+    .animate-delay-3 { animation-delay: 0.3s; }
+    .animate-delay-4 { animation-delay: 0.4s; }
+    .animate-delay-5 { animation-delay: 0.5s; }
+    .animate-delay-6 { animation-delay: 0.6s; }
+
+    .section-hidden {
+      opacity: 0;
+    }
+
+    .section-visible {
+      opacity: 1;
+    }
+  </style>
+
   <!-- Hero -->
-  <section id="home" class="fade-section max-w-screen-xl mx-auto px-4 py-20 flex flex-col md:flex-row items-center gap-8">
-    <div class="flex-1">
-      <h1 class="text-4xl md:text-5xl font-bold text-[#cf3339]">Creamos software a medida, que optimizan tu negocio</h1>
-      <p class="mt-4 text-lg">En Tutelkan, solucionamos problemas y mejoramos los procesos de tu empresa sin importar su tamaño.</p>
-      <div class="mt-6">
-        <a href="#contacto" class="bg-[#cf3339] text-white px-6 py-3 rounded hover:bg-[#b52d32]">Conversemos</a>
+  <section id="home" class="max-w-screen-xl mx-auto px-4 py-20 flex flex-col md:flex-row items-center gap-8 bg-white">
+    <div class="flex-1 hero-text">
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-700 leading-tight animate-slide-left">
+        Creamos software a medida, 
+        <span class="text-[#cf3339]">que optimizan tu negocio</span>
+      </h1>
+      <p class="mt-6 text-lg text-gray-600 font-medium animate-slide-left animate-delay-2">En Tutelkan, solucionamos problemas y mejoramos los procesos de tu empresa sin importar su tamaño.</p>
+      <div class="mt-8 animate-slide-left animate-delay-3">
+        <a href="#contacto" class="bg-[#cf3339] text-white px-8 py-3 rounded-full font-semibold hover:bg-[#b52d32] transition-colors">Conversemos</a>
       </div>
     </div>
-    <div class="flex-1">
-      <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" alt="Computador" class="w-full rounded shadow" />
+    <div class="flex-1 hero-image">
+      <div class="relative animate-slide-right animate-delay-1">
+        <div class="w-full h-96 bg-gradient-to-br from-gray-100 to-gray-200 rounded-full flex items-center justify-center">
+          <div class="text-6xl">💡</div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Servicios -->
-  <section id="servicios" class="fade-section bg-white py-20">
+  <section id="servicios" class="bg-gray-50 py-20 section-animate">
     <div class="max-w-screen-xl mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center text-[#cf3339]">Nuestros servicios</h2>
-      <p class="mt-4 text-center font-semibold">¿Qué ofrecemos?</p>
-      <p class="mt-2 text-center">En Tutelkan, damos vida a soluciones tecnológicas únicas, diseñadas meticulosamente para satisfacer tus necesidades industriales específicas. Sumérgete en un mundo de servicios que fusionan innovación y eficiencia, siendo la clave para propulsar tu empresa hacia el éxito en la era de la Industria 4.0.</p>
-      <div class="mt-10 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <div class="text-center mb-4 animate-slide-up">
+        <span class="text-[#cf3339] font-semibold text-sm uppercase tracking-wide">NUESTROS SERVICIOS</span>
+      </div>
+      <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-6 animate-slide-up animate-delay-1">¿Qué ofrecemos?</h2>
+      <p class="mt-4 text-center text-gray-600 max-w-4xl mx-auto leading-relaxed animate-slide-up animate-delay-2">En Tutelkan, damos vida a soluciones tecnológicas únicas, diseñadas meticulosamente para satisfacer tus necesidades industriales específicas. Sumérgete en un mundo de servicios que fusionan innovación y eficiencia, siendo la clave para propulsar tu empresa hacia el éxito en la era de la Industria 4.0.</p>
+      
+      <div class="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         {services.map((service, index) => (
-          <div class="p-6 border border-gray-200 rounded shadow-sm bg-gray-50">
-            <span class="text-[#cf3339] font-bold">{index + 1}.- {service.title}</span>
-            <p class="mt-2 text-sm">{service.description}</p>
+          <div class={`p-8 bg-gray-200 rounded-lg animate-slide-up animate-delay-${index + 1}`}>
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-[#cf3339] text-white rounded-lg flex items-center justify-center text-xl mr-4">
+                {service.icon}
+              </div>
+              <h3 class="font-bold text-gray-800 text-lg leading-tight">{service.title}</h3>
+            </div>
+            <p class="text-gray-600 text-sm leading-relaxed">{service.description}</p>
           </div>
         ))}
       </div>
@@ -79,31 +189,33 @@ const faqs = [
   </section>
 
   <!-- Sobre nosotros -->
-  <section id="nosotros" class="fade-section bg-gray-100 py-20">
-    <div class="max-w-screen-xl mx-auto px-4 flex flex-col md:flex-row items-center gap-8">
-      <div class="flex-1">
-        <h2 class="text-3xl font-bold text-[#cf3339]">Impulsando la innovación tecnológica desde el 2006</h2>
-        <p class="mt-4 text-lg">Tutelkan surgió para suplir una carencia en la industria manufacturera, ofreciendo soluciones de software y soporte técnico de primera línea. Desde entonces, hemos expandido nuestro campo de acción a sectores como el forestal, alimentario, agrícola y más, con una rica trayectoria de proyectos exitosos. Nos distinguimos por nuestra expertise en soluciones tecnológicas personalizadas, enfocándonos constantemente en potenciar la eficiencia y competitividad de nuestros clientes.</p>
+  <section id="nosotros" class="bg-white py-20 section-animate">
+    <div class="max-w-screen-xl mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
+      <div class="flex-1 animate-slide-left">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 leading-tight">Impulsando la innovación tecnológica desde el 2006</h2>
+        <p class="mt-6 text-lg text-gray-600 leading-relaxed">Tutelkan surgió para suplir una carencia en la industria manufacturera, ofreciendo soluciones de software y soporte técnico de primera línea. Desde entonces, hemos expandido nuestro campo de acción a sectores como el forestal, alimentario, agrícola y más, con una rica trayectoria de proyectos exitosos. Nos distinguimos por nuestra expertise en soluciones tecnológicas personalizadas, enfocándonos constantemente en potenciar la eficiencia y competitividad de nuestros clientes.</p>
       </div>
-      <div class="flex-1">
-        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=80" alt="Equipo" class="w-full rounded shadow" />
+      <div class="flex-1 animate-slide-right">
+        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=80" alt="Equipo" class="w-full rounded-lg shadow-lg" />
       </div>
     </div>
   </section>
 
   <!-- Soporte -->
-  <section id="soporte" class="fade-section py-20">
-    <div class="max-w-screen-xl mx-auto px-4 flex flex-col md:flex-row items-center gap-8">
-      <div class="flex-1 order-2 md:order-1">
-        <img src="https://images.unsplash.com/photo-1581093458791-9d4c6ee8e0f3?auto=format&fit=crop&w=800&q=80" alt="Soporte" class="w-full rounded shadow" />
+  <section id="soporte" class="bg-gray-50 py-20 section-animate">
+    <div class="max-w-screen-xl mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
+      <div class="flex-1 order-2 md:order-1 animate-slide-left">
+        <img src="https://images.unsplash.com/photo-1581093458791-9d4c6ee8e0f3?auto=format&fit=crop&w=800&q=80" alt="Soporte" class="w-full rounded-lg shadow-lg" />
       </div>
-      <div class="flex-1 order-1 md:order-2">
-        <span class="text-[#cf3339] font-semibold">SOPORTE Y MANTENCIÓN</span>
-        <h2 class="text-3xl font-bold mt-2 text-[#cf3339]">Asistencia técnica ininterrumpida: Tu confianza, nuestra prioridad</h2>
-        <p class="mt-4">Nuestro compromiso es garantizar que tus operaciones nunca se detengan, ofreciendo un soporte técnico y servicios de mantenimiento que están a la altura de tus expectativas.</p>
-        <div class="mt-6 grid grid-cols-2 gap-4">
-          {['Respuesta Rápida','Soporte 24/7','Personal Calificado','Mantenimiento Proactivo'].map(item => (
-            <button class="border border-[#cf3339] text-[#cf3339] px-4 py-2 rounded" aria-label={item}>{item}</button>
+      <div class="flex-1 order-1 md:order-2 animate-slide-right">
+        <div class="mb-4">
+          <span class="text-[#cf3339] font-semibold text-sm uppercase tracking-wide">SOPORTE Y MANTENCIÓN</span>
+        </div>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 leading-tight">Asistencia técnica ininterrumpida: Tu confianza, nuestra prioridad</h2>
+        <p class="mt-6 text-lg text-gray-600 leading-relaxed">Nuestro compromiso es garantizar que tus operaciones nunca se detengan, ofreciendo un soporte técnico y servicios de mantenimiento que están a la altura de tus expectativas.</p>
+        <div class="mt-8 grid grid-cols-2 gap-4">
+          {['Respuesta Rápida','Soporte 24/7','Personal Calificado','Mantenimiento Proactivo'].map((item, index) => (
+            <button class={`border-2 border-[#cf3339] text-[#cf3339] px-4 py-3 rounded-lg font-semibold hover:bg-[#cf3339] hover:text-white transition-colors animate-fade-scale animate-delay-${index + 3}`} aria-label={item}>{item}</button>
           ))}
         </div>
       </div>
@@ -111,63 +223,63 @@ const faqs = [
   </section>
 
   <!-- Estadísticas -->
-  <section class="fade-section bg-[#cf3339] text-white py-20">
+  <section class="bg-[#cf3339] text-white py-20 section-animate">
     <div class="max-w-screen-xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-      <div>
-        <p class="text-4xl font-bold">+18</p>
-        <p class="mt-2">Años de experiencia</p>
+      <div class="animate-slide-up animate-delay-1">
+        <p class="text-4xl md:text-5xl font-bold counter" data-target="18">0</p>
+        <p class="mt-2 text-lg">Años de experiencia</p>
       </div>
-      <div>
-        <p class="text-4xl font-bold">+200</p>
-        <p class="mt-2">Proyectos finalizados</p>
+      <div class="animate-slide-up animate-delay-2">
+        <p class="text-4xl md:text-5xl font-bold counter" data-target="200">0</p>
+        <p class="mt-2 text-lg">Proyectos finalizados</p>
       </div>
-      <div>
-        <p class="text-4xl font-bold">+20000</p>
-        <p class="mt-2">Horas de soporte</p>
+      <div class="animate-slide-up animate-delay-3">
+        <p class="text-4xl md:text-5xl font-bold counter" data-target="20000">0</p>
+        <p class="mt-2 text-lg">Horas de soporte</p>
       </div>
-      <div>
-        <p class="text-4xl font-bold">+50</p>
-        <p class="mt-2">Tecnologías utilizadas</p>
+      <div class="animate-slide-up animate-delay-4">
+        <p class="text-4xl md:text-5xl font-bold counter" data-target="50">0</p>
+        <p class="mt-2 text-lg">Tecnologías utilizadas</p>
       </div>
     </div>
   </section>
 
   <!-- Por qué elegirnos -->
-  <section id="porque" class="fade-section py-20 bg-white">
+  <section id="porque" class="py-20 bg-white section-animate">
     <div class="max-w-screen-xl mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center text-[#cf3339]">Por qué nuestros clientes nos eligen</h2>
-      <p class="mt-4 text-center">Nos posicionamos como tu socio confiable, guiando tu negocio hacia un horizonte de innovación y eficiencia.</p>
-      <div class="mt-10 grid gap-8 md:grid-cols-3">
-        <div class="p-6 border border-gray-200 rounded text-center">
-          <span class="text-[#cf3339] font-bold text-2xl">01.</span>
-          <h3 class="mt-4 font-semibold">Soluciones Garantizadas</h3>
-          <p class="mt-2 text-sm">Cada proyecto que emprendemos está respaldado por nuestra garantía de satisfacción, asegurando que cumplimos con tus expectativas en cada etapa.</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-6 animate-slide-up">Por qué nuestros clientes nos eligen</h2>
+      <p class="mt-4 text-center text-gray-600 max-w-3xl mx-auto leading-relaxed animate-slide-up animate-delay-1">Nos posicionamos como tu socio confiable, guiando tu negocio hacia un horizonte de innovación y eficiencia.</p>
+      <div class="mt-16 grid gap-8 md:grid-cols-3">
+        <div class="p-8 border border-gray-200 rounded-lg text-center hover:shadow-lg transition-shadow animate-slide-up animate-delay-1">
+          <span class="text-[#cf3339] font-bold text-3xl">01.</span>
+          <h3 class="mt-4 font-bold text-xl text-gray-800">Soluciones Garantizadas</h3>
+          <p class="mt-4 text-gray-600 leading-relaxed">Cada proyecto que emprendemos está respaldado por nuestra garantía de satisfacción, asegurando que cumplimos con tus expectativas en cada etapa.</p>
         </div>
-        <div class="p-6 border border-gray-200 rounded text-center">
-          <span class="text-[#cf3339] font-bold text-2xl">02.</span>
-          <h3 class="mt-4 font-semibold">Colaboración Cercana</h3>
-          <p class="mt-2 text-sm">Valoramos la colaboración y la comunicación abierta con nuestros clientes. Este enfoque colaborativo nos permite trabajar juntos para desarrollar soluciones que reflejen tus visiones y metas a la perfección.</p>
+        <div class="p-8 border border-gray-200 rounded-lg text-center hover:shadow-lg transition-shadow animate-slide-up animate-delay-2">
+          <span class="text-[#cf3339] font-bold text-3xl">02.</span>
+          <h3 class="mt-4 font-bold text-xl text-gray-800">Colaboración Cercana</h3>
+          <p class="mt-4 text-gray-600 leading-relaxed">Valoramos la colaboración y la comunicación abierta con nuestros clientes. Este enfoque colaborativo nos permite trabajar juntos para desarrollar soluciones que reflejen tus visiones y metas a la perfección.</p>
         </div>
-        <div class="p-6 border border-gray-200 rounded text-center">
-          <span class="text-[#cf3339] font-bold text-2xl">03.</span>
-          <h3 class="mt-4 font-semibold">Experiencia y Vanguardia</h3>
-          <p class="mt-2 text-sm">Con 18 años de experiencia a nuestras espaldas, combinamos nuestra profunda comprensión del sector con un enfoque innovador, asegurando que cada solución que desarrollamos está a la vanguardia, marcando tendencias en el sector industrial.</p>
+        <div class="p-8 border border-gray-200 rounded-lg text-center hover:shadow-lg transition-shadow animate-slide-up animate-delay-3">
+          <span class="text-[#cf3339] font-bold text-3xl">03.</span>
+          <h3 class="mt-4 font-bold text-xl text-gray-800">Experiencia y Vanguardia</h3>
+          <p class="mt-4 text-gray-600 leading-relaxed">Con 18 años de experiencia a nuestras espaldas, combinamos nuestra profunda comprensión del sector con un enfoque innovador, asegurando que cada solución que desarrollamos está a la vanguardia, marcando tendencias en el sector industrial.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Portafolio -->
-  <section id="portafolio" class="fade-section bg-gray-100 py-20">
+  <section id="portafolio" class="bg-gray-50 py-20 section-animate">
     <div class="max-w-screen-xl mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center text-[#cf3339]">Nuestro Portafolio</h2>
-      <p class="mt-4 text-center">Descubre algunas de las soluciones innovadoras que hemos implementado, reflejo de nuestro compromiso con la excelencia y la adaptación a las necesidades específicas de cada industria. Estas soluciones son sólo una muestra de la amplia gama de soluciones que ofrecemos.</p>
-      <div class="mt-10 grid gap-8 md:grid-cols-3">
-        {projects.map(project => (
-          <a href={project.link} class="block border border-gray-200 rounded overflow-hidden hover:shadow-lg">
+      <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-6 animate-slide-up">Nuestro Portafolio</h2>
+      <p class="mt-4 text-center text-gray-600 max-w-4xl mx-auto leading-relaxed animate-slide-up animate-delay-1">Descubre algunas de las soluciones innovadoras que hemos implementado, reflejo de nuestro compromiso con la excelencia y la adaptación a las necesidades específicas de cada industria. Estas soluciones son sólo una muestra de la amplia gama de soluciones que ofrecemos.</p>
+      <div class="mt-16 grid gap-8 md:grid-cols-3">
+        {projects.map((project, index) => (
+          <a href={project.link} class={`block border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow bg-white animate-slide-up animate-delay-${index + 2}`}>
             <img src={project.image} alt={project.title} class="w-full h-48 object-cover" />
-            <div class="p-4">
-              <h3 class="font-semibold">{project.title}</h3>
+            <div class="p-6">
+              <h3 class="font-bold text-lg text-gray-800">{project.title}</h3>
             </div>
           </a>
         ))}
@@ -176,13 +288,13 @@ const faqs = [
   </section>
 
   <!-- Logos -->
-  <section id="clientes" class="fade-section py-20">
+  <section id="clientes" class="py-20 bg-white section-animate">
     <div class="max-w-screen-xl mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center text-[#cf3339]">Han confiado en nosotros</h2>
-      <div class="mt-10 overflow-x-auto">
-        <div class="flex items-center gap-10">
-          {Array.from({ length: 6 }).map(() => (
-            <img src="https://via.placeholder.com/150x80?text=Logo" alt="Logo" class="h-20 w-auto flex-shrink-0" />
+      <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-6 animate-slide-up">Han confiado en nosotros</h2>
+      <div class="mt-16 overflow-x-auto">
+        <div class="flex items-center justify-center gap-12">
+          {Array.from({ length: 6 }).map((_, index) => (
+            <img key={index} src="https://via.placeholder.com/150x80?text=Logo" alt="Logo" class={`h-20 w-auto flex-shrink-0 opacity-70 hover:opacity-100 transition-opacity animate-fade-scale animate-delay-${index + 1}`} />
           ))}
         </div>
       </div>
@@ -190,15 +302,15 @@ const faqs = [
   </section>
 
   <!-- Testimonios -->
-  <section id="testimonios" class="fade-section bg-gray-100 py-20">
+  <section id="testimonios" class="bg-gray-50 py-20 section-animate">
     <div class="max-w-screen-xl mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center text-[#cf3339]">Testimonios</h2>
-      <div class="mt-10 flex overflow-x-auto gap-8 snap-x">
-        {testimonials.map(test => (
-          <div class="min-w-[300px] snap-center p-6 bg-white border border-gray-200 rounded shadow">
-            <p>"{test.quote}"</p>
-            <p class="mt-4 font-semibold">{test.author}</p>
-            <p class="text-sm">{test.role}</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-6 animate-slide-up">Testimonios</h2>
+      <div class="mt-16 flex overflow-x-auto gap-8 snap-x">
+        {testimonials.map((test, index) => (
+          <div class={`min-w-[300px] snap-center p-8 bg-white border border-gray-200 rounded-lg shadow-sm animate-slide-up animate-delay-${index + 1}`}>
+            <p class="text-gray-600 italic text-lg">"{test.quote}"</p>
+            <p class="mt-6 font-bold text-gray-800">{test.author}</p>
+            <p class="text-gray-500">{test.role}</p>
           </div>
         ))}
       </div>
@@ -206,14 +318,14 @@ const faqs = [
   </section>
 
   <!-- FAQ -->
-  <section id="faq" class="fade-section py-20">
+  <section id="faq" class="py-20 bg-white section-animate">
     <div class="max-w-screen-xl mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center text-[#cf3339]">Preguntas frecuentes</h2>
-      <div class="mt-10 space-y-4">
-        {faqs.map(faq => (
-          <details class="border border-gray-200 rounded">
-            <summary class="cursor-pointer px-4 py-2 font-medium">{faq.question}</summary>
-            <p class="px-4 py-2 bg-gray-50">{faq.answer}</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-6 animate-slide-up">Preguntas frecuentes</h2>
+      <div class="mt-16 space-y-4 max-w-3xl mx-auto">
+        {faqs.map((faq, index) => (
+          <details class={`border border-gray-200 rounded-lg overflow-hidden animate-slide-up animate-delay-${index + 1}`}>
+            <summary class="cursor-pointer px-6 py-4 font-semibold text-gray-800 bg-gray-50 hover:bg-gray-100 transition-colors">{faq.question}</summary>
+            <p class="px-6 py-4 bg-white text-gray-600">{faq.answer}</p>
           </details>
         ))}
       </div>
@@ -221,33 +333,168 @@ const faqs = [
   </section>
 
   <!-- Contacto -->
-  <section id="contacto" class="fade-section bg-gray-100 py-20">
-    <div class="max-w-screen-xl mx-auto px-4 grid md:grid-cols-2 gap-8">
-      <div>
-        <h2 class="text-3xl font-bold text-[#cf3339]">Contáctanos</h2>
-        <p class="mt-4">Teléfono: +56 9 1234 5678</p>
-        <p class="mt-2">Email: contacto@tutelkan.com</p>
-        <p class="mt-2">Dirección: Calle Falsa 123, Santiago</p>
+  <section id="contacto" class="bg-gray-50 py-20 section-animate">
+    <div class="max-w-screen-xl mx-auto px-4">
+      <div class="text-center mb-4 animate-slide-up">
+        <span class="text-[#cf3339] font-semibold text-sm uppercase tracking-wide">CONTACTO</span>
       </div>
-      <form class="space-y-4">
-        <div class="grid grid-cols-2 gap-4">
-          <input type="text" placeholder="Nombre" class="border border-gray-300 p-2 rounded" />
-          <input type="text" placeholder="Apellidos" class="border border-gray-300 p-2 rounded" />
+      <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-16 animate-slide-up animate-delay-1">Contáctanos</h2>
+      
+      <div class="grid md:grid-cols-2 gap-12">
+        <div class="space-y-6 animate-slide-up animate-delay-2">
+          <div class="flex items-center">
+            <div class="w-12 h-12 bg-[#cf3339] text-white rounded-lg flex items-center justify-center mr-4">
+              ✉️
+            </div>
+            <div>
+              <p class="font-semibold text-gray-800">info@tutelkan.com</p>
+            </div>
+          </div>
+          
+          <div class="flex items-center">
+            <div class="w-12 h-12 bg-[#cf3339] text-white rounded-lg flex items-center justify-center mr-4">
+              📞
+            </div>
+            <div>
+              <p class="font-semibold text-gray-800">+56 (71) 2224 367 / 2287 838</p>
+            </div>
+          </div>
+          
+          <div class="flex items-center">
+            <div class="w-12 h-12 bg-[#cf3339] text-white rounded-lg flex items-center justify-center mr-4">
+              📍
+            </div>
+            <div>
+              <p class="font-semibold text-gray-800">12 Oriente 7 y 8 Norte #1853 Talca Chile</p>
+            </div>
+          </div>
+
+          <div class="mt-8">
+            <p class="font-bold text-gray-800 mb-4">¡ESTAMOS CERTIFICADOS!</p>
+            <div class="bg-[#cf3339] text-white p-4 rounded-lg inline-block">
+              <p class="font-bold">ISO 9001</p>
+              <p class="text-sm">BUREAU VERITAS</p>
+              <p class="text-sm">Certification</p>
+            </div>
+          </div>
         </div>
-        <div class="grid grid-cols-2 gap-4">
-          <input type="email" placeholder="Email" class="border border-gray-300 p-2 rounded" />
-          <input type="tel" placeholder="Teléfono" class="border border-gray-300 p-2 rounded" />
-        </div>
-        <textarea placeholder="Mensaje" class="w-full border border-gray-300 p-2 rounded" rows="4"></textarea>
-        <button type="button" class="bg-[#cf3339] text-white px-6 py-2 rounded hover:bg-[#b52d32]">Enviar</button>
-      </form>
+        
+        <form class="space-y-6 bg-white p-8 rounded-lg shadow-sm border border-gray-200 animate-slide-up animate-delay-3">
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-gray-700 font-semibold mb-2">Nombre *</label>
+              <input type="text" placeholder="Ingrese su nombre" class="w-full border border-gray-300 p-3 rounded-lg focus:border-[#cf3339] focus:outline-none" />
+            </div>
+            <div>
+              <label class="block text-gray-700 font-semibold mb-2">Apellidos *</label>
+              <input type="text" placeholder="Ingrese su apellido" class="w-full border border-gray-300 p-3 rounded-lg focus:border-[#cf3339] focus:outline-none" />
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-gray-700 font-semibold mb-2">Email *</label>
+              <input type="email" placeholder="Ingrese su email" class="w-full border border-gray-300 p-3 rounded-lg focus:border-[#cf3339] focus:outline-none" />
+            </div>
+            <div>
+              <label class="block text-gray-700 font-semibold mb-2">Teléfono *</label>
+              <input type="tel" placeholder="Ingrese su teléfono" class="w-full border border-gray-300 p-3 rounded-lg focus:border-[#cf3339] focus:outline-none" />
+            </div>
+          </div>
+          <div>
+            <label class="block text-gray-700 font-semibold mb-2">Mensaje *</label>
+            <textarea placeholder="Ingrese su mensaje" class="w-full border border-gray-300 p-3 rounded-lg focus:border-[#cf3339] focus:outline-none" rows="5"></textarea>
+          </div>
+          <button type="button" class="bg-[#cf3339] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#b52d32] transition-colors">Enviar</button>
+        </form>
+      </div>
     </div>
   </section>
 
   <!-- Mapa -->
-  <section id="mapa" class="fade-section py-20">
+  <section id="mapa" class="py-20 bg-white section-animate">
     <div class="max-w-screen-xl mx-auto px-4">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.093297073735!2d-70.64826958421102!3d-33.44888998078145!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c59e1f97d0b1%3A0x414a707d4b1f9a7!2sSantiago%2C%20Chile!5e0!3m2!1ses-419!2scl!4v1616626930141!5m2!1ses-419!2scl" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.093297073735!2d-70.64826958421102!3d-33.44888998078145!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c59e1f97d0b1%3A0x414a707d4b1f9a7!2sSantiago%2C%20Chile!5e0!3m2!1ses-419!2scl!4v1616626930141!5m2!1ses-419!2scl" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" class="rounded-lg shadow-lg animate-slide-up"></iframe>
     </div>
   </section>
+
+  <script>
+    // Intersection Observer para activar animaciones cuando las secciones son visibles
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('section-visible');
+          entry.target.classList.remove('section-hidden');
+          
+          // Activar animaciones de los elementos hijos
+          const animatedElements = entry.target.querySelectorAll('[class*="animate-"]');
+          animatedElements.forEach(el => {
+            el.style.animationPlayState = 'running';
+          });
+
+          // Activar contadores cuando la sección de estadísticas es visible
+          if (entry.target.querySelector('.counter')) {
+            startCounters();
+          }
+        }
+      });
+    }, observerOptions);
+
+    // Observar todas las secciones
+    document.querySelectorAll('.section-animate').forEach(section => {
+      section.classList.add('section-hidden');
+      observer.observe(section);
+    });
+
+    // Función para animar contadores
+    function startCounters() {
+      const counters = document.querySelectorAll('.counter');
+      counters.forEach(counter => {
+        if (counter.dataset.animated) return;
+        
+        const target = parseInt(counter.dataset.target);
+        const duration = 2000;
+        const increment = target / (duration / 16);
+        let current = 0;
+
+        const updateCounter = () => {
+          current += increment;
+          if (current < target) {
+            counter.textContent = Math.floor(current).toLocaleString();
+            requestAnimationFrame(updateCounter);
+          } else {
+            counter.textContent = target.toLocaleString();
+          }
+        };
+
+        counter.dataset.animated = 'true';
+        updateCounter();
+      });
+    }
+
+    // Pausar animaciones inicialmente
+    document.querySelectorAll('[class*="animate-"]').forEach(el => {
+      el.style.animationPlayState = 'paused';
+    });
+
+    // Activar animaciones del hero inmediatamente cuando la página carga
+    window.addEventListener('load', () => {
+      const heroElements = document.querySelectorAll('#home [class*="animate-"]');
+      heroElements.forEach(el => {
+        el.style.animationPlayState = 'running';
+      });
+    });
+
+    // También activar hero animations en DOMContentLoaded como backup
+    document.addEventListener('DOMContentLoaded', () => {
+      const heroElements = document.querySelectorAll('#home [class*="animate-"]');
+      heroElements.forEach(el => {
+        el.style.animationPlayState = 'running';
+      });
+    });
+  </script>
 </Layout>
