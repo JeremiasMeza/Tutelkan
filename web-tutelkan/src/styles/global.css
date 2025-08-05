@@ -1,1 +1,13 @@
 @import "tailwindcss";
+
+/* Animations for section reveal */
+.fade-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.fade-section.show {
+  opacity: 1;
+  transform: translateY(0);
+}

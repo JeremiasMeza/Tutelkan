@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
 const { title = 'Tutelkan' } = Astro.props;
 ---
 <html lang="es">
@@ -11,10 +12,23 @@ const { title = 'Tutelkan' } = Astro.props;
     <title>{title}</title>
     <slot name="head" />
   </head>
-  <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+  <body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
     <Navbar />
     <main>
       <slot />
     </main>
+    <Footer />
+    <script>
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+          }
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.fade-section').forEach((section) => {
+        observer.observe(section);
+      });
+    </script>
   </body>
 </html>
