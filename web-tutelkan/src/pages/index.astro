@@ -1,6 +1,253 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const services = [
+  {
+    title: 'Desarrollo de Software a Medida',
+    description: 'La personalización es la esencia de la innovación. En Tutelkan, diseñamos soluciones de software únicas, pensadas para impulsar la innovación y eficiencia en tu empresa, delineando el camino hacia un futuro tecnológicamente avanzado.'
+  },
+  {
+    title: 'Soluciones de Automatización Industrial',
+    description: 'Implementamos soluciones de automatización que no solo optimizan tus operaciones industriales, sino que también mejoran la seguridad y la eficiencia, preparando tu empresa para el futuro de la Industria 4.0.'
+  },
+  {
+    title: 'Aplicaciones Móviles y Web en Tiempo Real',
+    description: 'Desarrollamos aplicaciones móviles y web que proporcionan monitoreo y control en tiempo real, permitiendo una respuesta rápida y decisiones basadas en datos.'
+  },
+  {
+    title: 'Integraciones de Sistemas Empresariales y de Planta',
+    description: 'Facilitamos la cohesión en tu empresa, integrando eficientemente sistemas ERP, legados e interfaces de piso de planta, uniendo todas las áreas de tu negocio para una operatividad sinérgica y optimizada.'
+  },
+  {
+    title: 'Consultoría en Innovación Tecnológica',
+    description: 'Brindamos consultoría experta para ayudarte a identificar y aplicar las soluciones tecnológicas más innovadoras en tu sector, asegurando que tu empresa esté siempre a la vanguardia.'
+  },
+  {
+    title: 'Mantenimiento y Soporte Técnico',
+    description: 'Ofrecemos servicios de mantenimiento y soporte técnico de alta calidad, garantizando que tus sistemas estén siempre funcionando a su máxima capacidad, y ayudándote a resolver cualquier problema que pueda surgir de manera eficiente.'
+  }
+];
+
+const projects = [
+  { title: 'Proyecto Uno', image: 'https://via.placeholder.com/400x300', link: '#' },
+  { title: 'Proyecto Dos', image: 'https://via.placeholder.com/400x300', link: '#' },
+  { title: 'Proyecto Tres', image: 'https://via.placeholder.com/400x300', link: '#' }
+];
+
+const testimonials = [
+  { quote: 'Excelente servicio y atención.', author: 'María López', role: 'Cliente' },
+  { quote: 'Profesionales y comprometidos.', author: 'José Pérez', role: 'Cliente' },
+  { quote: 'Soluciones innovadoras.', author: 'Ana García', role: 'Cliente' }
+];
+
+const faqs = [
+  { question: '¿Cómo puedo solicitar un proyecto?', answer: 'Contáctanos a través del formulario y conversaremos.' },
+  { question: '¿Ofrecen soporte 24/7?', answer: 'Sí, contamos con personal disponible todo el día.' },
+  { question: '¿Trabajan con empresas pequeñas?', answer: 'Sí, adaptamos nuestras soluciones a cualquier tamaño de empresa.' }
+];
 ---
 <Layout title="Inicio">
-  <h1 class="text-4xl font-bold">Astro</h1>
+  <!-- Hero -->
+  <section id="home" class="fade-section max-w-screen-xl mx-auto px-4 py-20 flex flex-col md:flex-row items-center gap-8">
+    <div class="flex-1">
+      <h1 class="text-4xl md:text-5xl font-bold text-[#cf3339]">Creamos software a medida, que optimizan tu negocio</h1>
+      <p class="mt-4 text-lg">En Tutelkan, solucionamos problemas y mejoramos los procesos de tu empresa sin importar su tamaño.</p>
+      <div class="mt-6">
+        <a href="#contacto" class="bg-[#cf3339] text-white px-6 py-3 rounded hover:bg-[#b52d32]">Conversemos</a>
+      </div>
+    </div>
+    <div class="flex-1">
+      <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" alt="Computador" class="w-full rounded shadow" />
+    </div>
+  </section>
+
+  <!-- Servicios -->
+  <section id="servicios" class="fade-section bg-white py-20">
+    <div class="max-w-screen-xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center text-[#cf3339]">Nuestros servicios</h2>
+      <p class="mt-4 text-center font-semibold">¿Qué ofrecemos?</p>
+      <p class="mt-2 text-center">En Tutelkan, damos vida a soluciones tecnológicas únicas, diseñadas meticulosamente para satisfacer tus necesidades industriales específicas. Sumérgete en un mundo de servicios que fusionan innovación y eficiencia, siendo la clave para propulsar tu empresa hacia el éxito en la era de la Industria 4.0.</p>
+      <div class="mt-10 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {services.map((service, index) => (
+          <div class="p-6 border border-gray-200 rounded shadow-sm bg-gray-50">
+            <span class="text-[#cf3339] font-bold">{index + 1}.- {service.title}</span>
+            <p class="mt-2 text-sm">{service.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Sobre nosotros -->
+  <section id="nosotros" class="fade-section bg-gray-100 py-20">
+    <div class="max-w-screen-xl mx-auto px-4 flex flex-col md:flex-row items-center gap-8">
+      <div class="flex-1">
+        <h2 class="text-3xl font-bold text-[#cf3339]">Impulsando la innovación tecnológica desde el 2006</h2>
+        <p class="mt-4 text-lg">Tutelkan surgió para suplir una carencia en la industria manufacturera, ofreciendo soluciones de software y soporte técnico de primera línea. Desde entonces, hemos expandido nuestro campo de acción a sectores como el forestal, alimentario, agrícola y más, con una rica trayectoria de proyectos exitosos. Nos distinguimos por nuestra expertise en soluciones tecnológicas personalizadas, enfocándonos constantemente en potenciar la eficiencia y competitividad de nuestros clientes.</p>
+      </div>
+      <div class="flex-1">
+        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=80" alt="Equipo" class="w-full rounded shadow" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Soporte -->
+  <section id="soporte" class="fade-section py-20">
+    <div class="max-w-screen-xl mx-auto px-4 flex flex-col md:flex-row items-center gap-8">
+      <div class="flex-1 order-2 md:order-1">
+        <img src="https://images.unsplash.com/photo-1581093458791-9d4c6ee8e0f3?auto=format&fit=crop&w=800&q=80" alt="Soporte" class="w-full rounded shadow" />
+      </div>
+      <div class="flex-1 order-1 md:order-2">
+        <span class="text-[#cf3339] font-semibold">SOPORTE Y MANTENCIÓN</span>
+        <h2 class="text-3xl font-bold mt-2 text-[#cf3339]">Asistencia técnica ininterrumpida: Tu confianza, nuestra prioridad</h2>
+        <p class="mt-4">Nuestro compromiso es garantizar que tus operaciones nunca se detengan, ofreciendo un soporte técnico y servicios de mantenimiento que están a la altura de tus expectativas.</p>
+        <div class="mt-6 grid grid-cols-2 gap-4">
+          {['Respuesta Rápida','Soporte 24/7','Personal Calificado','Mantenimiento Proactivo'].map(item => (
+            <button class="border border-[#cf3339] text-[#cf3339] px-4 py-2 rounded" aria-label={item}>{item}</button>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Estadísticas -->
+  <section class="fade-section bg-[#cf3339] text-white py-20">
+    <div class="max-w-screen-xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      <div>
+        <p class="text-4xl font-bold">+18</p>
+        <p class="mt-2">Años de experiencia</p>
+      </div>
+      <div>
+        <p class="text-4xl font-bold">+200</p>
+        <p class="mt-2">Proyectos finalizados</p>
+      </div>
+      <div>
+        <p class="text-4xl font-bold">+20000</p>
+        <p class="mt-2">Horas de soporte</p>
+      </div>
+      <div>
+        <p class="text-4xl font-bold">+50</p>
+        <p class="mt-2">Tecnologías utilizadas</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Por qué elegirnos -->
+  <section id="porque" class="fade-section py-20 bg-white">
+    <div class="max-w-screen-xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center text-[#cf3339]">Por qué nuestros clientes nos eligen</h2>
+      <p class="mt-4 text-center">Nos posicionamos como tu socio confiable, guiando tu negocio hacia un horizonte de innovación y eficiencia.</p>
+      <div class="mt-10 grid gap-8 md:grid-cols-3">
+        <div class="p-6 border border-gray-200 rounded text-center">
+          <span class="text-[#cf3339] font-bold text-2xl">01.</span>
+          <h3 class="mt-4 font-semibold">Soluciones Garantizadas</h3>
+          <p class="mt-2 text-sm">Cada proyecto que emprendemos está respaldado por nuestra garantía de satisfacción, asegurando que cumplimos con tus expectativas en cada etapa.</p>
+        </div>
+        <div class="p-6 border border-gray-200 rounded text-center">
+          <span class="text-[#cf3339] font-bold text-2xl">02.</span>
+          <h3 class="mt-4 font-semibold">Colaboración Cercana</h3>
+          <p class="mt-2 text-sm">Valoramos la colaboración y la comunicación abierta con nuestros clientes. Este enfoque colaborativo nos permite trabajar juntos para desarrollar soluciones que reflejen tus visiones y metas a la perfección.</p>
+        </div>
+        <div class="p-6 border border-gray-200 rounded text-center">
+          <span class="text-[#cf3339] font-bold text-2xl">03.</span>
+          <h3 class="mt-4 font-semibold">Experiencia y Vanguardia</h3>
+          <p class="mt-2 text-sm">Con 18 años de experiencia a nuestras espaldas, combinamos nuestra profunda comprensión del sector con un enfoque innovador, asegurando que cada solución que desarrollamos está a la vanguardia, marcando tendencias en el sector industrial.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portafolio -->
+  <section id="portafolio" class="fade-section bg-gray-100 py-20">
+    <div class="max-w-screen-xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center text-[#cf3339]">Nuestro Portafolio</h2>
+      <p class="mt-4 text-center">Descubre algunas de las soluciones innovadoras que hemos implementado, reflejo de nuestro compromiso con la excelencia y la adaptación a las necesidades específicas de cada industria. Estas soluciones son sólo una muestra de la amplia gama de soluciones que ofrecemos.</p>
+      <div class="mt-10 grid gap-8 md:grid-cols-3">
+        {projects.map(project => (
+          <a href={project.link} class="block border border-gray-200 rounded overflow-hidden hover:shadow-lg">
+            <img src={project.image} alt={project.title} class="w-full h-48 object-cover" />
+            <div class="p-4">
+              <h3 class="font-semibold">{project.title}</h3>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Logos -->
+  <section id="clientes" class="fade-section py-20">
+    <div class="max-w-screen-xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center text-[#cf3339]">Han confiado en nosotros</h2>
+      <div class="mt-10 overflow-x-auto">
+        <div class="flex items-center gap-10">
+          {Array.from({ length: 6 }).map(() => (
+            <img src="https://via.placeholder.com/150x80?text=Logo" alt="Logo" class="h-20 w-auto flex-shrink-0" />
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonios -->
+  <section id="testimonios" class="fade-section bg-gray-100 py-20">
+    <div class="max-w-screen-xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center text-[#cf3339]">Testimonios</h2>
+      <div class="mt-10 flex overflow-x-auto gap-8 snap-x">
+        {testimonials.map(test => (
+          <div class="min-w-[300px] snap-center p-6 bg-white border border-gray-200 rounded shadow">
+            <p>"{test.quote}"</p>
+            <p class="mt-4 font-semibold">{test.author}</p>
+            <p class="text-sm">{test.role}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="fade-section py-20">
+    <div class="max-w-screen-xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center text-[#cf3339]">Preguntas frecuentes</h2>
+      <div class="mt-10 space-y-4">
+        {faqs.map(faq => (
+          <details class="border border-gray-200 rounded">
+            <summary class="cursor-pointer px-4 py-2 font-medium">{faq.question}</summary>
+            <p class="px-4 py-2 bg-gray-50">{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section id="contacto" class="fade-section bg-gray-100 py-20">
+    <div class="max-w-screen-xl mx-auto px-4 grid md:grid-cols-2 gap-8">
+      <div>
+        <h2 class="text-3xl font-bold text-[#cf3339]">Contáctanos</h2>
+        <p class="mt-4">Teléfono: +56 9 1234 5678</p>
+        <p class="mt-2">Email: contacto@tutelkan.com</p>
+        <p class="mt-2">Dirección: Calle Falsa 123, Santiago</p>
+      </div>
+      <form class="space-y-4">
+        <div class="grid grid-cols-2 gap-4">
+          <input type="text" placeholder="Nombre" class="border border-gray-300 p-2 rounded" />
+          <input type="text" placeholder="Apellidos" class="border border-gray-300 p-2 rounded" />
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <input type="email" placeholder="Email" class="border border-gray-300 p-2 rounded" />
+          <input type="tel" placeholder="Teléfono" class="border border-gray-300 p-2 rounded" />
+        </div>
+        <textarea placeholder="Mensaje" class="w-full border border-gray-300 p-2 rounded" rows="4"></textarea>
+        <button type="button" class="bg-[#cf3339] text-white px-6 py-2 rounded hover:bg-[#b52d32]">Enviar</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Mapa -->
+  <section id="mapa" class="fade-section py-20">
+    <div class="max-w-screen-xl mx-auto px-4">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.093297073735!2d-70.64826958421102!3d-33.44888998078145!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c59e1f97d0b1%3A0x414a707d4b1f9a7!2sSantiago%2C%20Chile!5e0!3m2!1ses-419!2scl!4v1616626930141!5m2!1ses-419!2scl" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </section>
 </Layout>
