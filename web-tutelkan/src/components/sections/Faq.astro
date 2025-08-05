@@ -1,0 +1,20 @@
+---
+const faqs = [
+  { question: '¿Cómo puedo solicitar un proyecto?', answer: 'Contáctanos a través del formulario y conversaremos.' },
+  { question: '¿Ofrecen soporte 24/7?', answer: 'Sí, contamos con personal disponible todo el día.' },
+  { question: '¿Trabajan con empresas pequeñas?', answer: 'Sí, adaptamos nuestras soluciones a cualquier tamaño de empresa.' }
+];
+---
+<section id="faq" class="py-20 bg-white section-animate">
+  <div class="max-w-screen-xl mx-auto px-4">
+    <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-6 animate-slide-up">Preguntas frecuentes</h2>
+    <div class="mt-16 space-y-4 max-w-3xl mx-auto">
+      {faqs.map((faq, index) => (
+        <details class={`border border-gray-200 rounded-lg overflow-hidden animate-slide-up animate-delay-${index + 1}`}>
+          <summary class="cursor-pointer px-6 py-4 font-semibold text-gray-800 bg-gray-50 hover:bg-gray-100 transition-colors">{faq.question}</summary>
+          <p class="px-6 py-4 bg-white text-gray-600">{faq.answer}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
