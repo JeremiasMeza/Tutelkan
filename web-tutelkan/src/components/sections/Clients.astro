@@ -1,12 +1,122 @@
-<section id="clients" class="py-20 bg-white section-animate">
+<section id="clients" class="py-16 bg-gray-100">
   <div class="max-w-screen-xl mx-auto px-4">
-    <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-6 animate-slide-up">Han confiado en nosotros</h2>
-    <div class="mt-16 overflow-x-auto">
-      <div class="flex items-center justify-center gap-12">
-        {Array.from({ length: 6 }).map((_, index) => (
-          <img key={index} src="https://via.placeholder.com/150x80?text=Logo" alt="Logo" class={`h-20 w-auto flex-shrink-0 opacity-70 hover:opacity-100 transition-opacity animate-fade-scale animate-delay-${index + 1}`} />
-        ))}
+    <!-- Título alineado a la izquierda y más pequeño -->
+    <h2 class="text-lg md:text-xl font-bold text-left text-red-600 mb-8 animate-slide-up">
+      HAN CONFIADO EN NOSOTROS
+    </h2>
+    
+    <!-- Contenedor del carrusel -->
+    <div class="mt-8 relative overflow-hidden">
+      <div id="carousel-track" class="flex items-center justify-center gap-8 md:gap-16 transition-all duration-500 ease-in-out">
+        <!-- Los logos se generan dinámicamente -->
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  /* Animaciones personalizadas (puedes moverlas a tu archivo CSS) */
+  @keyframes fadeScale {
+    0% { opacity: 0; transform: scale(0.8) translateY(20px); }
+    100% { opacity: 0.7; transform: scale(1) translateY(0); }
+  }
+
+  @keyframes slideUp {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-fade-scale {
+    animation: fadeScale 0.8s ease-out forwards;
+    opacity: 0;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+    opacity: 0;
+  }
+
+  /* Delays para animaciones escalonadas */
+  .animate-delay-1 { animation-delay: 0.1s; }
+  .animate-delay-2 { animation-delay: 0.2s; }
+  .animate-delay-3 { animation-delay: 0.3s; }
+  .animate-delay-4 { animation-delay: 0.4s; }
+  .animate-delay-5 { animation-delay: 0.5s; }
+  .animate-delay-6 { animation-delay: 0.6s; }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Array completo de logos
+    const logos = [
+      { src: '/images/clients-logos/1-CMPC.webp', alt: 'CMPC' },
+      { src: '/images/clients-logos/2-Arauco.webp', alt: 'Arauco' },
+      { src: '/images/clients-logos/3-PF-Alimentos.webp', alt: 'PF Alimentos' },
+      { src: '/images/clients-logos/3-white.webp', alt: 'White' },
+      { src: '/images/clients-logos/4-Unifrutti.webp', alt: 'Unifrutti' },
+      { src: '/images/clients-logos/5-LFE.webp', alt: 'LFE' },
+      { src: '/images/clients-logos/6-UTalca.webp', alt: 'Utalca' },
+      { src: '/images/clients-logos/7-Socoepa.webp', alt: 'Socoepa' },
+      { src: '/images/clients-logos/8-Oriencoop.webp', alt: 'Oriencoop' },
+      { src: '/images/clients-logos/9-Puertos-de-Talcahuano.webp', alt: 'Puertos de Talcahuano' },
+      { src: '/images/clients-logos/10-Danich.webp', alt: 'Danich' },
+      { src: '/images/clients-logos/11-Nebiolo.webp', alt: 'Nebiolo' },
+      { src: '/images/clients-logos/12-Servimak.webp', alt: 'Servimak' },
+      { src: '/images/clients-logos/13-Forestal-Río-Claro.webp', alt: 'Friosur Klaro' },
+      { src: '/images/clients-logos/14-Promaule.webp', alt: 'Promaule' },
+      { src: '/images/clients-logos/15-double-ju.webp', alt: 'Double Ju' },
+      { src: '/images/clients-logos/16-subus.webp', alt: 'Subus' },
+      { src: '/images/clients-logos/17-flowersindesign.webp', alt: 'Flowers in Design' },
+      { src: '/images/clients-logos/18-pasche.webp', alt: 'Pasche' },
+      { src: '/images/clients-logos/19-logo-gottingen.webp', alt: 'Gottingen' }
+    ];
+
+    const track = document.getElementById('carousel-track');
+    let currentIndex = 0;
+    const visibleLogos = 6;
+
+    function updateCarousel() {
+      // Limpiar el track
+      track.innerHTML = '';
+      
+      // Crear los 6 logos visibles con clases de Tailwind
+      for (let i = 0; i < visibleLogos; i++) {
+        const logoIndex = (currentIndex + i) % logos.length;
+        const logoData = logos[logoIndex];
+        
+        // Crear imagen con clases de Tailwind CSS - Cards más grandes
+        const img = document.createElement('img');
+        img.src = logoData.src;
+        img.alt = logoData.alt;
+        img.className = `h-24 md:h-28 w-auto flex-shrink-0 opacity-70 hover:opacity-100 hover:scale-105 transition-all duration-300 cursor-pointer animate-fade-scale animate-delay-${i + 1}`;
+        
+        track.appendChild(img);
+      }
+
+      // Avanzar al siguiente conjunto
+      currentIndex = (currentIndex + 1) % logos.length;
+    }
+
+    // Inicializar el carrusel
+    updateCarousel();
+
+    // Cambiar cada 3 segundos
+    setInterval(updateCarousel, 3000);
+
+    // Activar animación del título cuando sea visible
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const title = entry.target.querySelector('.animate-slide-up');
+          if (title) {
+            title.style.animationPlayState = 'running';
+          }
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    observer.observe(document.getElementById('clients'));
+  });
+</script>
