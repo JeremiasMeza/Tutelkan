@@ -1,7 +1,8 @@
 // Configuración del observador para animaciones de secciones
 const observerOptions = {
   threshold: 0.1,
-  rootMargin: '0px 0px -100px 0px'
+  // Trigger animations slightly before the section enters the viewport
+  rootMargin: '0px 0px -50px 0px'
 };
 
 // Crear el observador de intersección
