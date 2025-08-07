@@ -12,3 +12,10 @@
   opacity: 1;
   transform: translateY(0);
 }
+html.dark .text-gray-500,
+html.dark .text-gray-600,
+html.dark .text-gray-700,
+html.dark .text-gray-800,
+html.dark .text-gray-900 {
+  color: #ffffff;
+}
