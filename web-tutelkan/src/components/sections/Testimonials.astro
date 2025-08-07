@@ -1,22 +1,90 @@
 ---
 const testimonials = [
-  { quote: 'Excelente servicio y atención.', author: 'María López', role: 'Cliente' },
-  { quote: 'Profesionales y comprometidos.', author: 'José Pérez', role: 'Cliente' },
-  { quote: 'Soluciones innovadoras.', author: 'Ana García', role: 'Cliente' }
+  {
+    quote: 'Queremos agradecer al equipo de Tutelkan por su excelente trabajo, en cuanto a desarrollos de aplicativas a medida, y al servicio de atención al cliente posterior. Siempre resolviendo cualquier problema de forma eficiente. Un equipo muy profesional y a la vanguardia en tecnología.',
+    author: 'Mario Seguel',
+    role: 'Encargado Unidad Sistemas legacy',
+    company: 'Universidad de Talca',
+    image: 'marioSeguel.webp',
+    stars: 5
+  },
+  {
+    quote: 'Como Productos Fernández S.A. hemos trabajado con Tutelkan hace más de 10 años ejecutando distintos proyectos de sistema de información para nuestra Gerencia Comercial, de Producción, Operaciones y de Pricing. En todos estos años hemos encontrado un profesionalismo en todo el ciclo de proyecto, desde el levantamiento de las necesidades de nuestros usuarios pasando por el diseño, desarrollo y entrega final del producto de software. Puedo recomendar con toda confianza a Tutelkan para su próximo proyecto de Software.',
+    author: 'Mario Díaz',
+    role: 'Gerente de Informática y Comunicaciones',
+    company: 'Productos Fernández S.A.',
+    image: 'MarioDiaz.webp',
+    stars: 5
+  },
+  {
+    quote: 'Desde el inicio de la transformación digital de nuestra empresa, Tutelkan nos ha colaborado con el desarrollo de plataformas que nos permiten automatizar procesos y disminuir los tiempos en la generación de informes, manteniendo una relación de confianza por medio de la pronta respuesta ante necesidades de las distintas áreas. Además, mantienen una comunicación fluida y respetuosa con los usuarios claves.',
+    author: 'Gonzalo Gacitúa',
+    role: 'Responsable de Informática',
+    company: 'Puertos de Talcahuano',
+    image: 'Gonzalo_Gacitua_65x65.webp',
+    stars: 5
+  }
 ];
 ---
+
 <section id="testimonials" class="bg-gray-50 py-20 section-animate">
   <div class="max-w-screen-xl mx-auto px-4">
-    <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-6 animate-slide-up">Testimonios</h2>
-    <div class="mt-16 flex overflow-x-auto gap-8 snap-x">
-      {testimonials.map((test, index) => (
-        <div class={`min-w-[300px] snap-center p-8 bg-white border border-gray-200 rounded-lg shadow-sm animate-slide-up animate-delay-${index + 1}`}>
-          <p class="text-gray-600 italic text-lg">"{test.quote}"</p>
-          <p class="mt-6 font-bold text-gray-800">{test.author}</p>
-          <p class="text-gray-500">{test.role}</p>
+    <div class="text-center mb-16">
+      <p class="text-red-custom font-semibold text-sm uppercase tracking-wider mb-2">TESTIMONIOS</p>
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6 animate-slide-up">Testimonios de clientes</h2>
+      <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+        Descubre cómo Tutelkan ha impulsado la innovación y el éxito en diversas industrias a través de las palabras de nuestros valiosos clientes.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {testimonials.map((testimonial, index) => (
+        <div class="bg-gray-100 rounded-lg p-8 h-full flex flex-col">
+          <!-- Author Info -->
+          <div class="flex items-center mb-4">
+            <img 
+              src={`/images/testimonials/${testimonial.image}`} 
+              alt={testimonial.author}
+              class="w-12 h-12 rounded-full object-cover mr-4 flex-shrink-0"
+            />
+            <div>
+              <h4 class="font-bold text-gray-800 text-base">{testimonial.author}</h4>
+              <p class="text-gray-600 text-sm">{testimonial.role}</p>
+              <p class="text-gray-500 text-sm">{testimonial.company}</p>
+            </div>
+          </div>
+
+          <!-- Stars -->
+          <div class="flex mb-6">
+            {Array.from({ length: testimonial.stars }, (_, i) => (
+              <svg class="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+              </svg>
+            ))}
+          </div>
+
+          <!-- Quote -->
+          <blockquote class="text-gray-700 text-base leading-relaxed italic flex-grow">
+            "{testimonial.quote}"
+          </blockquote>
         </div>
       ))}
     </div>
   </div>
 </section>
+
+<style>
+  .text-red-custom {
+    color: #dc2626;
+  }
+  
+  .bg-red-custom {
+    background-color: #dc2626;
+  }
+  .grid > div {
+    display: flex;
+    flex-direction: column;
+  }
+</style>
+
 <script type="module" src="/src/scripts/sections/testimonials.js"></script>

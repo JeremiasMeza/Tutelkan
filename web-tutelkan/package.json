@@ -11,6 +11,7 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.1.11",
     "astro": "^5.12.8",
+    "bootstrap-icons": "^1.13.1",
     "tailwindcss": "^4.1.11",
     "tinacms": "^2.8.2"
   },

@@ -3,7 +3,6 @@ import { initSection } from '../sectionObserver.js';
 document.addEventListener('DOMContentLoaded', function () {
   initSection('#clients');
 
-  // Array completo de logos
   const logos = [
     { src: '/images/clients-logos/1-CMPC.webp', alt: 'CMPC' },
     { src: '/images/clients-logos/2-Arauco.webp', alt: 'Arauco' },
@@ -49,7 +48,6 @@ document.addEventListener('DOMContentLoaded', function () {
     currentIndex = (currentIndex + 1) % logos.length;
   }
 
-  // Inicializar el carrusel
   updateCarousel();
   setInterval(updateCarousel, 3000);
 });

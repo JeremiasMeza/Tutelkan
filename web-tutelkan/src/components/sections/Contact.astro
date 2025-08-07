@@ -1,72 +1,91 @@
-<section id="contact" class="bg-gray-50 py-20 section-animate">
+<section id="contact" class="bg-white py-20 section-animate">
   <div class="max-w-screen-xl mx-auto px-4">
-    <div class="text-center mb-4 animate-slide-up">
+    <div class="text-left mb-4 animate-slide-up">
       <span class="text-[#cf3339] font-semibold text-sm uppercase tracking-wide">CONTACTO</span>
     </div>
-    <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-16 animate-slide-up animate-delay-1">Contáctanos</h2>
+    <h2 class="text-3xl md:text-4xl font-bold text-left text-gray-800 mb-16 animate-slide-up animate-delay-1">Contáctanos</h2>
     <div class="grid md:grid-cols-2 gap-12">
-      <div class="space-y-6 animate-slide-up animate-delay-2">
+      <div class="space-y-8 animate-slide-up animate-delay-2">
         <div class="flex items-center">
-          <div class="w-12 h-12 bg-[#cf3339] text-white rounded-lg flex items-center justify-center mr-4">
-            ✉️
-          </div>
+          <i class="bi bi-envelope-fill mx-4 text-[#cf3339] text-3xl"></i>
           <div>
-            <p class="font-semibold text-gray-800">info@tutelkan.com</p>
+            <p class="font-semibold text-gray-800 text-xl">info@tutelkan.com</p>
           </div>
         </div>
         <div class="flex items-center">
-          <div class="w-12 h-12 bg-[#cf3339] text-white rounded-lg flex items-center justify-center mr-4">
-            📞
-          </div>
+          <i class="bi bi-phone-fill mx-4 text-[#cf3339] text-3xl"></i>
           <div>
-            <p class="font-semibold text-gray-800">+56 (71) 2224 367 / 2287 838</p>
+            <a href="tel:+56712224367" class="font-semibold text-gray-800 text-xl hover:text-[#cf3339] transition-colors">+56 (71) 2224 367</a>
+            <span class="font-semibold text-gray-800 text-xl"> / </span>
+            <a href="tel:+56712287838" class="font-semibold text-gray-800 text-xl hover:text-[#cf3339] transition-colors">2287 838</a>
           </div>
         </div>
         <div class="flex items-center">
-          <div class="w-12 h-12 bg-[#cf3339] text-white rounded-lg flex items-center justify-center mr-4">
-            📍
-          </div>
+          <i class="bi bi-geo-alt-fill mx-4 text-[#cf3339] text-3xl"></i>
           <div>
-            <p class="font-semibold text-gray-800">12 Oriente 7 y 8 Norte #1853 Talca Chile</p>
+            <p class="font-semibold text-gray-800 text-xl">12 Oriente 7 y 8 Norte #1853 Talca Chile</p>
           </div>
         </div>
-        <div class="mt-8">
-          <p class="font-bold text-gray-800 mb-4">¡ESTAMOS CERTIFICADOS!</p>
-          <div class="bg-[#cf3339] text-white p-4 rounded-lg inline-block">
-            <p class="font-bold">ISO 9001</p>
-            <p class="text-sm">BUREAU VERITAS</p>
-            <p class="text-sm">Certification</p>
+        <div class="mt-16">
+          <p class="font-bold text-gray-700 mb-6 text-xl">¡ESTAMOS CERTIFICADOS!</p>
+          <div class="cursor-pointer" id="isoImage">
+            <img 
+              src="/images/ISO_9001.jpg" 
+              alt="Certificación ISO 9001" 
+              class="w-auto h-40 hover:opacity-80 transition-opacity duration-300"
+            />
           </div>
         </div>
       </div>
-      <form class="space-y-6 bg-white p-8 rounded-lg shadow-sm border border-gray-200 animate-slide-up animate-delay-3">
+      
+      <form class="space-y-6 animate-slide-up animate-delay-3">
         <div class="grid grid-cols-2 gap-4">
           <div>
-            <label class="block text-gray-700 font-semibold mb-2">Nombre *</label>
-            <input type="text" placeholder="Ingrese su nombre" class="w-full border border-gray-300 p-3 rounded-lg focus:border-[#cf3339] focus:outline-none" />
+            <label class="block text-gray-700 font-semibold mb-2">Nombre <span class="text-red-500">*</span></label>
+            <input type="text" placeholder="Ingrese su nombre" class="w-full p-3 rounded-lg focus:border-[#cf3339] focus:outline-none bg-gray-100 border-0" />
           </div>
           <div>
-            <label class="block text-gray-700 font-semibold mb-2">Apellidos *</label>
-            <input type="text" placeholder="Ingrese su apellido" class="w-full border border-gray-300 p-3 rounded-lg focus:border-[#cf3339] focus:outline-none" />
-          </div>
-        </div>
-        <div class="grid grid-cols-2 gap-4">
-          <div>
-            <label class="block text-gray-700 font-semibold mb-2">Email *</label>
-            <input type="email" placeholder="Ingrese su email" class="w-full border border-gray-300 p-3 rounded-lg focus:border-[#cf3339] focus:outline-none" />
-          </div>
-          <div>
-            <label class="block text-gray-700 font-semibold mb-2">Teléfono *</label>
-            <input type="tel" placeholder="Ingrese su teléfono" class="w-full border border-gray-300 p-3 rounded-lg focus:border-[#cf3339] focus:outline-none" />
+            <label class="block text-gray-700 font-semibold mb-2">Apellidos <span class="text-red-500">*</span></label>
+            <input type="text" placeholder="Ingrese su apellido" class="w-full p-3 rounded-lg focus:border-[#cf3339] focus:outline-none bg-gray-100 border-0" />
           </div>
         </div>
         <div>
-          <label class="block text-gray-700 font-semibold mb-2">Mensaje *</label>
-          <textarea placeholder="Ingrese su mensaje" class="w-full border border-gray-300 p-3 rounded-lg focus:border-[#cf3339] focus:outline-none" rows="5"></textarea>
+          <label class="block text-gray-700 font-semibold mb-2">Email <span class="text-red-500">*</span></label>
+          <input type="email" placeholder="Ingrese su email" class="w-full p-3 rounded-lg focus:border-[#cf3339] focus:outline-none bg-gray-100 border-0" />
+        </div>
+        <div>
+          <label class="block text-gray-700 font-semibold mb-2">Teléfono <span class="text-red-500">*</span></label>
+          <input type="tel" placeholder="Ingrese su teléfono" class="w-full p-3 rounded-lg focus:border-[#cf3339] focus:outline-none bg-gray-100 border-0" />
+        </div>
+        <div>
+          <label class="block text-gray-700 font-semibold mb-2">Mensaje <span class="text-red-500">*</span></label>
+          <textarea placeholder="Ingrese su mensaje" class="w-full p-3 rounded-lg focus:border-[#cf3339] focus:outline-none bg-gray-100 border-0" rows="8"></textarea>
         </div>
         <button type="button" class="bg-[#cf3339] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#b52d32] transition-colors">Enviar</button>
       </form>
     </div>
   </div>
 </section>
+
+<div id="certificationModal" class="fixed inset-0 backdrop-blur-sm backdrop-brightness-75 z-50 hidden flex items-center justify-center p-4">
+  <div class="bg-white rounded-lg max-w-2xl max-h-[80vh] overflow-auto relative">
+    <div class="sticky top-0 bg-white p-4 border-b flex justify-between items-center">
+      <h3 class="text-lg font-semibold text-gray-800">Certificación</h3>
+      <button id="closeModalBtn" class="text-gray-500 hover:text-gray-700 text-2xl font-bold">×</button>
+    </div>
+    <div class="p-4">
+      <img 
+        src="/images/CertificaciónISO9001.webp" 
+        alt="Certificación ISO 9001 - Servicios Integrales de Informática Tutelkan Limitada" 
+        class="w-full h-auto"
+      />
+    </div>
+    <div class="sticky bottom-0 bg-white p-4 border-t text-center">
+      <button id="closeModalBtnBottom" class="bg-[#cf3339] text-white px-6 py-2 rounded-lg font-semibold hover:bg-[#b52d32] transition-colors">
+        Cerrar
+      </button>
+    </div>
+  </div>
+</div>
+
 <script type="module" src="/src/scripts/sections/contact.js"></script>

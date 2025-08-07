@@ -1,21 +1,30 @@
----
-const faqs = [
-  { question: '¿Cómo puedo solicitar un proyecto?', answer: 'Contáctanos a través del formulario y conversaremos.' },
-  { question: '¿Ofrecen soporte 24/7?', answer: 'Sí, contamos con personal disponible todo el día.' },
-  { question: '¿Trabajan con empresas pequeñas?', answer: 'Sí, adaptamos nuestras soluciones a cualquier tamaño de empresa.' }
-];
----
 <section id="faq" class="py-20 bg-white section-animate">
   <div class="max-w-screen-xl mx-auto px-4">
-    <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-6 animate-slide-up">Preguntas frecuentes</h2>
-    <div class="mt-16 space-y-4 max-w-3xl mx-auto">
-      {faqs.map((faq, index) => (
-        <details class={`border border-gray-200 rounded-lg overflow-hidden animate-slide-up animate-delay-${index + 1}`}>
-          <summary class="cursor-pointer px-6 py-4 font-semibold text-gray-800 bg-gray-50 hover:bg-gray-100 transition-colors">{faq.question}</summary>
-          <p class="px-6 py-4 bg-white text-gray-600">{faq.answer}</p>
-        </details>
-      ))}
+    <div class="text-left mb-16">
+      <p class="text-red-500 text-sm font-semibold uppercase tracking-wide mb-2">FAQ</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4 animate-slide-up">
+        Preguntas frecuentes
+      </h2>
+      <p class="text-gray-600 max-w-2xl animate-slide-up">
+        A continuación encontrarás respuesta a los temas más comunes, para que conozcas a fondo quiénes somos, en qué nos especializamos y cómo trabajamos.
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-5 gap-12 items-start">
+      <div class="lg:col-span-2">
+        <img 
+          src="/images/faq/Tutelkan_Preguntas_Frecuentes_Web.webp" 
+          alt="Tutelkan - Preguntas Frecuentes" 
+          class="w-full h-auto animate-slide-up"
+          loading="lazy"
+        />
+      </div>
+
+      <div class="lg:col-span-3 flex flex-col gap-6" id="faqs">
+      </div>
     </div>
   </div>
 </section>
+
+
 <script type="module" src="/src/scripts/sections/faq.js"></script>

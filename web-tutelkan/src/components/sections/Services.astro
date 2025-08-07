@@ -3,61 +3,129 @@ const services = [
   {
     title: 'Desarrollo de Software a Medida',
     description: 'La personalización es la esencia de la innovación. En Tutelkan, diseñamos soluciones de software únicas, pensadas para impulsar la innovación y eficiencia en tu empresa, delineando el camino hacia un futuro tecnológicamente avanzado.',
-    icon: '</>',
-    bgColor: 'bg-gray-200'
+    icon: 'bi-code-slash'
   },
   {
     title: 'Soluciones de Automatización Industrial',
     description: 'Implementamos soluciones de automatización que no solo optimizan tus operaciones industriales, sino que también mejoran la seguridad y la eficiencia, preparando tu empresa para el futuro de la Industria 4.0.',
-    icon: '⚙️',
-    bgColor: 'bg-gray-200'
+    icon: 'bi-gear-wide-connected'
   },
   {
     title: 'Aplicaciones Móviles y Web en Tiempo Real',
     description: 'Desarrollamos aplicaciones móviles y web que proporcionan monitoreo y control en tiempo real, permitiendo una respuesta rápida y decisiones basadas en datos.',
-    icon: '📱',
-    bgColor: 'bg-gray-200'
+    icon: 'bi-window-stack'
   },
   {
     title: 'Integraciones de Sistemas Empresariales y de Planta',
     description: 'Facilitamos la cohesión en tu empresa, integrando eficientemente sistemas ERP, legados e interfaces de piso de planta, uniendo todas las áreas de tu negocio para una operatividad sinérgica y optimizada.',
-    icon: '🧩',
-    bgColor: 'bg-gray-200'
+    icon: 'bi-puzzle-fill'
   },
   {
     title: 'Consultoría en Innovación Tecnológica',
     description: 'Brindamos consultoría experta para ayudarte a identificar y aplicar las soluciones tecnológicas más innovadoras en tu sector, asegurando que tu empresa esté siempre a la vanguardia.',
-    icon: '👤',
-    bgColor: 'bg-gray-200'
+    icon: 'bi-person-badge-fill'
   },
   {
     title: 'Mantenimiento y Soporte Técnico',
     description: 'Ofrecemos servicios de mantenimiento y soporte técnico de alta calidad, garantizando que tus sistemas estén siempre funcionando a su máxima capacidad, y ayudándote a resolver cualquier problema que pueda surgir de manera eficiente.',
-    icon: '🛟',
-    bgColor: 'bg-gray-200'
+    icon: 'bi-life-preserver'
   }
 ];
 ---
-<section id="services" class="bg-gray-50 py-20 section-animate">
-  <div class="max-w-screen-xl mx-auto px-4">
-    <div class="text-center mb-4 animate-slide-up">
+
+<section id="services" class="bg-white min-h-screen flex items-center section-animate">
+  <div class="max-w-screen-xl mx-auto px-4 py-20">
+    <div class="text-left mb-4 animate-slide-up">
       <span class="text-[#cf3339] font-semibold text-sm uppercase tracking-wide">NUESTROS SERVICIOS</span>
     </div>
-    <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-6 animate-slide-up animate-delay-1">¿Qué ofrecemos?</h2>
-    <p class="mt-4 text-center text-gray-600 max-w-4xl mx-auto leading-relaxed animate-slide-up animate-delay-2">En Tutelkan, damos vida a soluciones tecnológicas únicas, diseñadas meticulosamente para satisfacer tus necesidades industriales específicas. Sumérgete en un mundo de servicios que fusionan innovación y eficiencia, siendo la clave para propulsar tu empresa hacia el éxito en la era de la Industria 4.0.</p>
-    <div class="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+    <div class="text-left mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold text-[#404742] mb-6 animate-slide-up animate-delay-1">¿Qué ofrecemos?</h2>
+      <p class="text-[#404742] text-lg max-w-4xl leading-relaxed animate-slide-up animate-delay-2">
+        En Tutelkan, damos vida a soluciones tecnológicas únicas, diseñadas meticulosamente para satisfacer tus necesidades industriales específicas. Sumérgete en un mundo de servicios que fusionan innovación y eficiencia, siendo la clave para propulsar tu empresa hacia el éxito en la era de la Industria 4.0.
+      </p>
+    </div>
+
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
       {services.map((service, index) => (
-        <div class={`p-8 bg-gray-200 rounded-lg animate-slide-up animate-delay-${index + 1}`}>
-          <div class="flex items-center mb-4">
-            <div class="w-12 h-12 bg-[#cf3339] text-white rounded-lg flex items-center justify-center text-xl mr-4">
-              {service.icon}
+        <div class={`service-card group relative overflow-hidden p-10 bg-[#eff0ef] rounded-lg cursor-pointer animate-slide-up animate-delay-${index + 1}`}>
+          <!-- Overlay de animación -->
+          <div class="absolute inset-0 bg-[#cf3339] transform -translate-x-full transition-transform duration-500 ease-out group-hover:translate-x-0"></div>
+          
+          <!-- Contenido de la card -->
+          <div class="relative z-10">
+            <!-- Icono alineado a la izquierda y más grande -->
+            <div class="mb-6">
+              <div class="w-16 h-16 bg-transparent text-[#cf3339] flex items-center justify-center transition-colors duration-500 group-hover:text-white">
+                <i class={`bi ${service.icon} text-4xl`}></i>
+              </div>
             </div>
-            <h3 class="font-bold text-gray-800 text-lg leading-tight">{service.title}</h3>
+            
+            <!-- Título alineado a la izquierda -->
+            <h3 class="font-bold text-[#404742] text-xl leading-tight mb-4 transition-colors duration-500 group-hover:text-white">
+              {service.title}
+            </h3>
+            
+            <!-- Descripción -->
+            <p class="text-[#404742] text-base leading-relaxed transition-colors duration-500 group-hover:text-white">
+              {service.description}
+            </p>
           </div>
-          <p class="text-gray-600 text-sm leading-relaxed">{service.description}</p>
         </div>
       ))}
     </div>
   </div>
 </section>
+
+<style>
+  .service-card {
+    transition: all 0.3s ease;
+    min-height: 350px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .service-card > div:first-child {
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+  }
+
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(207, 51, 57, 0.15);
+  }
+
+  .service-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .service-card > div {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .animate-slide-up {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slideUp 0.6s ease forwards;
+  }
+
+  .animate-delay-1 { animation-delay: 0.1s; }
+  .animate-delay-2 { animation-delay: 0.2s; }
+  .animate-delay-3 { animation-delay: 0.3s; }
+  .animate-delay-4 { animation-delay: 0.4s; }
+  .animate-delay-5 { animation-delay: 0.5s; }
+  .animate-delay-6 { animation-delay: 0.6s; }
+
+  @keyframes slideUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
 <script type="module" src="/src/scripts/sections/services.js"></script>

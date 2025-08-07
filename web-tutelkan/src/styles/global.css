@@ -1,11 +1,11 @@
 @import "tailwindcss";
+@import 'bootstrap-icons/font/bootstrap-icons.css';
 
 
-/* General fade-in effect for sections */
 .fade-section {
   opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.4s ease, transform 0.4s ease;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
 }
 
 .fade-section.show {
