@@ -30,16 +30,16 @@ const testimonials = [
 <section id="testimonials" class="bg-gray-50 py-20 section-animate">
   <div class="max-w-screen-xl mx-auto px-4">
     <div class="text-center mb-16">
-      <p class="text-red-custom font-semibold text-sm uppercase tracking-wider mb-2">TESTIMONIOS</p>
+      <p class="text-red-600 font-semibold text-sm uppercase tracking-wider mb-2 animate-slide-up">TESTIMONIOS</p>
       <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6 animate-slide-up">Testimonios de clientes</h2>
-      <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+      <p class="text-gray-600 text-lg max-w-3xl mx-auto animate-slide-up animate-delay-1">
         Descubre cómo Tutelkan ha impulsado la innovación y el éxito en diversas industrias a través de las palabras de nuestros valiosos clientes.
       </p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {testimonials.map((testimonial, index) => (
-        <div class="bg-gray-100 rounded-lg p-8 h-full flex flex-col">
+        <div class={`bg-gray-100 rounded-lg p-8 h-full flex flex-col animate-slide-up animate-delay-${index + 2}`}>
           <!-- Author Info -->
           <div class="flex items-center mb-4">
             <img 
@@ -72,19 +72,5 @@ const testimonials = [
     </div>
   </div>
 </section>
-
-<style>
-  .text-red-custom {
-    color: #dc2626;
-  }
-  
-  .bg-red-custom {
-    background-color: #dc2626;
-  }
-  .grid > div {
-    display: flex;
-    flex-direction: column;
-  }
-</style>
 
 <script type="module" src="/src/scripts/sections/testimonials.js"></script>
