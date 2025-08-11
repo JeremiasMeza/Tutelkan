@@ -39,25 +39,25 @@ html.dark .bg-gray-100 {
   background-color: #121212;
 }
 
-#theme-toggle {
+.theme-toggle {
   aspect-ratio: 1;
   min-width: 2.5rem;
 }
 
 @media (min-width: 640px) {
-  #theme-toggle {
+  .theme-toggle {
     min-width: 3rem;
   }
 }
 
-#theme-toggle i {
+.theme-toggle i {
   will-change: transform, opacity;
 }
 
-#theme-toggle:hover {
+.theme-toggle:hover {
   transform: scale(1.05);
 }
 
-#theme-toggle:active {
+.theme-toggle:active {
   transform: scale(0.95);
 }
