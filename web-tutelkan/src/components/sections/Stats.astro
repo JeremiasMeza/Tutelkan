@@ -1,52 +1,21 @@
----
-const supportItems = [
-  { text: 'Respuesta Rápida', icon: 'bi-lightning-fill' },
-  { text: 'Soporte 24/7', icon: 'bi-headset' },
-  { text: 'Personal Calificado', icon: 'bi-person-heart' },
-  { text: 'Mantenimiento Proactivo', icon: 'bi-wrench-adjustable' }
-];
----
-
-<section id="support" class="bg-white py-20 section-animate">
-  <div class="max-w-screen-xl mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
-    <div class="flex-1 order-2 md:order-1 animate-slide-left">
-      <img 
-        src="/images/about/Tutelkan_Asistencia_Tecnica_Web.webp" 
-        alt="Soporte técnico Tutelkan" 
-        class="w-full" 
-      />
+<section id="stats" class="bg-gray-100 py-20 section-animate">
+  <div class="max-w-screen-xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+    <div class="animate-slide-up animate-delay-1">
+      <p class="text-4xl md:text-6xl font-bold text-[#cf3339] counter" data-target="18">0</p>
+      <p class="mt-3 text-lg md:text-xl font-semibold text-gray-700">Años de experiencia</p>
     </div>
-    <div class="flex-1 order-1 md:order-2 animate-slide-right">
-      <div class="mb-4">
-        <span class="text-[#cf3339] font-semibold text-sm uppercase tracking-wide">SOPORTE Y MANTENCIÓN</span>
-      </div>
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-800 leading-tight">
-        Asistencia técnica ininterrumpida: 
-        <span class="text-[#cf3339]">Tu confianza, nuestra prioridad</span>
-      </h2>
-      <p class="mt-6 text-lg text-gray-600 leading-relaxed">
-        Nuestro compromiso es garantizar que tus operaciones nunca se detengan, 
-        ofreciendo un soporte técnico y servicios de mantenimiento que están a la 
-        altura de tus expectativas.
-      </p>
-      <div class="mt-8 grid grid-cols-2 gap-4">
-        {supportItems.map((item, index) => (
-          <button 
-            class={`relative overflow-hidden bg-gray-200 text-gray-700 px-6 py-5 rounded-lg font-bold text-lg transition-all duration-300 hover:text-white animate-fade-scale animate-delay-${index + 3} group`} 
-            aria-label={item.text}
-          >
-            <span class="absolute inset-0 bg-[#cf3339] transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-in-out"></span>
-            <span class="relative z-10 flex items-center justify-start gap-4 text-left">
-              <i class={`bi ${item.icon} text-[#cf3339] group-hover:text-white transition-colors duration-300 text-xl flex-shrink-0`}></i>
-              <span class="text-left">{item.text}</span>
-            </span>
-          </button>
-        ))}
-      </div>
+    <div class="animate-slide-up animate-delay-2">
+      <p class="text-4xl md:text-6xl font-bold text-[#cf3339] counter" data-target="200">0</p>
+      <p class="mt-3 text-lg md:text-xl font-semibold text-gray-700">Proyectos finalizados</p>
+    </div>
+    <div class="animate-slide-up animate-delay-3">
+      <p class="text-4xl md:text-6xl font-bold text-[#cf3339] counter" data-target="20000">0</p>
+      <p class="mt-3 text-lg md:text-xl font-semibold text-gray-700">Horas de soporte</p>
+    </div>
+    <div class="animate-slide-up animate-delay-4">
+      <p class="text-4xl md:text-6xl font-bold text-[#cf3339] counter" data-target="50">0</p>
+      <p class="mt-3 text-lg md:text-xl font-semibold text-gray-700">Tecnologías utilizadas</p>
     </div>
   </div>
 </section>
-
-
-
-<script type="module" src="/src/scripts/sections/support.js"></script>
+<script type="module" src="/src/scripts/sections/stats.js"></script>

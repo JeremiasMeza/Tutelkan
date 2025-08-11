@@ -1,19 +1,28 @@
 import { defineConfig } from "tinacms";
 
-// Your hosting provider likely exposes this as an environment variable
+
+
+// Branch por defecto
 const branch =
   process.env.GITHUB_BRANCH ||
   process.env.VERCEL_GIT_COMMIT_REF ||
   process.env.HEAD ||
-  "main";
+  "master";
+
+
+
+
 
 export default defineConfig({
   branch,
 
-  // Get this from tina.io
+  // Variables de Tina Cloud (en local pueden ir vacías)
   clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID,
-  // Get this from tina.io
   token: process.env.TINA_TOKEN,
+  
+  editor: {
+    enabled: false, // Solo formularios, sin preview
+  },
 
   build: {
     outputFolder: "admin",
@@ -21,31 +30,49 @@ export default defineConfig({
   },
   media: {
     tina: {
-      mediaRoot: "",
       publicFolder: "public",
+      mediaRoot: "images",
     },
   },
-  // See docs on content modeling for more info on how to setup new content models: https://tina.io/docs/schema/
+
   schema: {
     collections: [
+      // POSTS DEL BLOG (Markdown)
       {
-        name: "post",
+        name: "posts",
         label: "Posts",
-        path: "content/posts",
+        path: "src/content/posts",
+        format: "md",
+        ui: {
+          router: ({ document }) => `/blog/${document._sys.filename}`,
+        },
         fields: [
-          {
-            type: "string",
-            name: "title",
-            label: "Title",
-            isTitle: true,
-            required: true,
-          },
-          {
-            type: "rich-text",
-            name: "body",
-            label: "Body",
-            isBody: true,
-          },
+          { type: "string", name: "title", label: "Título", isTitle: true, required: true },
+          { type: "string", name: "description", label: "Descripción" },
+          { type: "datetime", name: "pubDate", label: "Fecha", required: true },
+          { type: "image", name: "heroImage", label: "Imagen destacada" },
+          { type: "string", name: "tags", label: "Tags", list: true },
+          { type: "rich-text", name: "body", label: "Contenido", isBody: true },
+          { type: "boolean", name: "featured", label: "Destacado (mostrar arriba)" },
+
+        ],
+      },
+
+      // PÁGINAS EDITABLES (ej: /blog.md para la cabecera del listado)
+      {
+        name: "pages",
+        label: "Páginas",
+        path: "src/content/pages",
+        format: "md",
+        ui: {
+          // blog.md -> /blog, contacto.md -> /contacto, etc.
+          router: ({ document }) => `/${document._sys.filename}`,
+        },
+        fields: [
+          { type: "string", name: "title", label: "Título", isTitle: true, required: true },
+          { type: "string", name: "intro", label: "Intro" },
+          { type: "image", name: "heroImage", label: "Imagen destacada" },
+          { type: "rich-text", name: "body", label: "Contenido", isBody: true },
         ],
       },
     ],

@@ -1,26 +1,14 @@
 ---
 ---
-<button id="theme-toggle" class="w-12 h-12 flex items-center justify-center rounded-full bg-gray-200 text-gray-700 hover:bg-white transition-colors duration-200 dark:bg-gray-600 dark:text-gray-300 dark:hover:bg-gray-500">
-  <span class="sr-only">Cambiar tema</span>
-  <i id="theme-toggle-light" class="bi bi-sun-fill text-lg"></i>
-  <i id="theme-toggle-dark" class="bi bi-moon-fill text-lg hidden"></i>
+<button 
+  id="theme-toggle" 
+  class="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-gray-200 text-gray-700 hover:bg-gray-300 transition-all duration-200 dark:bg-gray-600 dark:text-gray-300 dark:hover:bg-gray-500 relative overflow-hidden"
+  aria-label="Cambiar tema"
+>
+  <div class="relative w-5 h-5 sm:w-6 sm:h-6">
+    <i id="theme-toggle-light" class="bi bi-sun-fill absolute inset-0 flex items-center justify-center text-base sm:text-lg transition-all duration-300 transform rotate-0 scale-100 opacity-100"></i>
+    <i id="theme-toggle-dark" class="bi bi-moon-fill absolute inset-0 flex items-center justify-center text-base sm:text-lg transition-all duration-300 transform -rotate-90 scale-0 opacity-0"></i>
+  </div>
 </button>
-<script>
-const toggle = document.getElementById('theme-toggle');
-const darkIcon = document.getElementById('theme-toggle-dark');
-const lightIcon = document.getElementById('theme-toggle-light');
 
-if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-  document.documentElement.classList.add('dark');
-  darkIcon.classList.remove('hidden');
-} else {
-  lightIcon.classList.remove('hidden');
-}
-
-toggle.addEventListener('click', () => {
-  darkIcon.classList.toggle('hidden');
-  lightIcon.classList.toggle('hidden');
-  document.documentElement.classList.toggle('dark');
-  localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
-});
-</script>
+<script src="/src/scripts/toggle.js"></script>

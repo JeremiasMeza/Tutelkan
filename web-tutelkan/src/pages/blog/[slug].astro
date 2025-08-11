@@ -1,0 +1,44 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const date = new Date(post.data.pubDate).toLocaleDateString('es-CL', {
+  year: 'numeric', month: 'long', day: 'numeric'
+});
+---
+
+<Layout title={post.data.title}>
+  <head>
+    {post.data.description && <meta name="description" content={post.data.description} />}
+    {post.data.heroImage && <meta property="og:image" content={post.data.heroImage} />}
+  </head>
+
+  <article class="max-w-screen-xl mx-auto px-4 py-16 prose prose-neutral">
+    <a href="/blog" class="no-underline text-sm">&larr; Volver al blog</a>
+
+    <h1 class="mb-2">{post.data.title}</h1>
+
+    {post.data.description && (
+      <p class="mt-0 text-gray-600">{post.data.description}</p>
+    )}
+
+    <p class="text-sm text-gray-500">{date}</p>
+
+    {post.data.heroImage && (
+      <img src={post.data.heroImage} alt={post.data.title} class="rounded-xl my-6" />
+    )}
+
+    <Content />
+  </article>
+</Layout>

@@ -1,6 +1,7 @@
 ---
 const year = new Date().getFullYear();
 ---
+
 <footer class="bg-gray-50 text-gray-600">
   <div class="max-w-screen-xl mx-auto px-4 py-6">
     <div class="flex flex-col md:flex-row items-center justify-between">
@@ -38,9 +39,9 @@ const year = new Date().getFullYear();
     </div>
     <div class="border-t border-gray-200 pt-4 mt-4">
       <div class="flex flex-wrap justify-center md:justify-end gap-1 text-sm">
-        <a href="#" class="hover:text-red-500 transition-colors">Condiciones de uso</a>
+        <button id="terms-btn" class="hover:text-red-500 transition-colors cursor-pointer">Condiciones de uso</button>
         <span class="text-gray-400">|</span>
-        <a href="#" class="hover:text-red-500 transition-colors">Política de privacidad</a>
+        <button id="privacy-btn" class="hover:text-red-500 transition-colors cursor-pointer">Política de privacidad</button>
         <span class="text-gray-400">|</span>
         <a href="/ethic" class="hover:text-red-500 transition-colors">Código de ética</a>
         <span class="text-gray-400">|</span>
@@ -49,3 +50,185 @@ const year = new Date().getFullYear();
     </div>
   </div>
 </footer>
+
+<div id="terms-modal" class="fixed inset-0 backdrop-blur-sm backdrop-brightness-75 z-50 hidden flex items-center justify-center p-4">
+  <div class="bg-white rounded-lg max-w-4xl max-h-[80vh] overflow-auto relative">
+    <div class="sticky top-0 bg-white p-4 border-b flex justify-between items-center">
+      <h3 class="text-lg font-semibold text-gray-800">Condiciones de uso</h3>
+      <button id="terms-close" class="text-gray-500 hover:text-gray-700 text-2xl font-bold">×</button>
+    </div>
+    <div class="p-6 text-sm text-gray-700 leading-relaxed">
+      <div class="space-y-4">
+        <p class="text-gray-600">La información facilitada en este sitio tiene únicamente fines informativos. Rogamos que lea y examine detenidamente estas Condiciones de Uso antes de utilizar o acceder a este sitio web. Al utilizar o acceder a este sitio web, usted reconoce que ha leído, entendido y aceptado el Contrato de Condiciones de Uso. Si no está de acuerdo con las Condiciones de Uso, no puede usar ni acceder a este sitio.</p>
+        
+        <div>
+          <h4 class="font-semibold text-gray-800 mb-2">Uso del sitio web</h4>
+          <p class="text-gray-600">La información facilitada en este sitio tiene únicamente fines informativos. Determinadas secciones de este sitio web están destinadas para audiencias particulares, como los empleados y clientes de Tutelkan, así como para el público en general. El acceso y uso de la información contenida en este sitio web están sujetos a este Contrato de Condiciones de Uso. Al usar y acceder a este sitio web, acepta, sin limitaciones ni salvedades, el presente Contrato de Condiciones de Uso.</p>
+        </div>
+
+        <div>
+          <h4 class="font-semibold text-gray-800 mb-2">Contenido</h4>
+          <p class="text-gray-600">Tutelkan realizará un esfuerzo razonable para incluir información exacta y actualizada en este sitio web, pero no garantiza ni efectúa manifestaciones de ningún tipo sobre su exactitud, actualidad o exhaustividad. Usted acepta que el acceso y uso de este sitio web y del contenido del mismo se efectúa a su propio riesgo. Tutelkan excluye todas las garantías, expresas o implícitas, incluidas las garantías de comerciabilidad y uso para un fin determinado. Ni Tutelkan ni ninguna entidad implicada en la creación, producción o suministro de este sitio web responderá por daños, incluidos, a título meramente enunciativo y no limitativo, daños directos, accesorios, consecuenciales, indirectos o sancionadores, derivados del acceso, del uso o de la imposibilidad de usar este sitio web, o de errores u omisiones en su contenido. Esta limitación incluye los daños a su equipo informático o los derivados de virus que infecten su equipo informático.</p>
+        </div>
+
+        <div>
+          <h4 class="font-semibold text-gray-800 mb-2">Indemnización</h4>
+          <p class="text-gray-600">Usted se compromete a indemnizar y resarcir a Tutelkan, sus directivos, administradores, empleados, agentes, proveedores y socios terceros frente a cualesquiera pérdidas, gastos, daños y costes, incluidos los honorarios razonables de abogados, derivados de cualquier vulneración por parte de usted de estas Condiciones de Uso.</p>
+        </div>
+
+        <div>
+          <h4 class="font-semibold text-gray-800 mb-2">Confidencialidad</h4>
+          <p class="text-gray-600">Tutelkan no desea recibir información confidencial ni de la propiedad del Cliente a través de nuestro sitio web. Por favor, tenga en cuenta que cualquier información o material enviado a Tutelkan se considerará como NO confidencial. Mediante el envío a Tutelkan de cualquier información o material, el Cliente otorga a Tutelkan una licencia no restringida e irrevocable para copiar, reproducir, publicar, subir, exhibir, publicar, transmitir, distribuir, mostrar públicamente, ejecutar, modificar y crear trabajos derivados a partir del mismo, y utilizar libremente del modo conveniente dicha información o material. También acepta que Tutelkan puede utilizar libremente cualquier idea, concepto, experiencia o técnicas que nos envíe con cualquier finalidad. No obstante, no publicaremos su nombre ni de otro modo haremos público el hecho de que nos remitió materiales u otra información a menos que: (a) obtengamos su permiso para utilizar su nombre; o (b) le notifiquemos antes que los materiales u otra información que remita a una parte específica de este sitio se publicarán o utilizarán de otro modo indicando en ella su nombre; o (c) la ley nos obligue a hacerlo así. La información de identificación personal que envíe a Tutelkan con el fin de recibir productos o servicios se gestionará de acuerdo con nuestra Política de Privacidad.</p>
+        </div>
+
+        <div>
+          <h4 class="font-semibold text-gray-800 mb-2">Vínculos y sitios web de terceros</h4>
+          <p class="text-gray-600">Este sitio web puede contener vínculos o referencias a otros sitios web mantenidos por terceros sobre los que Tutelkan carece de control. Dichos vínculos se incluyen únicamente para facilitar la consulta. Del mismo modo, se puede acceder a este sitio web desde vínculos de terceros sobre los que Tutelkan carece de control. Tutelkan no efectúa garantías ni manifestaciones de ningún tipo sobre la exactitud, actualidad o exhaustividad de la información contenida en dichos sitios web y no responderá por los daños o perjuicios de ningún tipo derivados de tales contenidos o información. La inclusión de un vínculo de un tercero no supone una ratificación o recomendación de Tutelkan.</p>
+        </div>
+
+        <div>
+          <h4 class="font-semibold text-gray-800 mb-2">Información no confidencial</h4>
+          <p class="text-gray-600">Sin perjuicio de los términos y condiciones aplicables establecidos en nuestra política de privacidad, cualquier comunicación o material que nos envíe a través de Internet o que coloque en el sitio web por correo electrónico o de otro modo, como preguntas, comentarios, sugerencias o similares, se considera y se considerará no confidencial y Tutelkan no tendrá ninguna obligación de ningún tipo en relación con dicha información. Tutelkan podrá utilizar libremente cualesquiera ideas, conceptos, know-how o técnicas que se contengan en dicha comunicación para cualquier fin, incluido, a título meramente enunciativo y no limitativo, el de desarrollar, producir y comercializar productos.</p>
+        </div>
+
+        <div>
+          <h4 class="font-semibold text-gray-800 mb-2">Disposiciones varias</h4>
+          <p class="text-gray-600">Si una disposición del presente Contrato es declarada ilegal, nula o inexigible, se prescindirá de dicha disposición sin que ello afecte a la exigibilidad de las disposiciones restantes. Tutelkan se reserva el derecho de modificar o suprimir materiales de este sitio web en cualquier momento con arreglo a su criterio discrecional.</p>
+        </div>
+      </div>
+    </div>
+    <div class="sticky bottom-0 bg-white p-4 border-t text-center">
+      <button id="terms-close-btn" class="bg-[#cf3339] text-white px-6 py-2 rounded-lg font-semibold hover:bg-[#b52d32] transition-colors">
+        Cerrar
+      </button>
+    </div>
+  </div>
+</div>
+
+<div id="privacy-modal" class="fixed inset-0 backdrop-blur-sm backdrop-brightness-75 z-50 hidden flex items-center justify-center p-4">
+  <div class="bg-white rounded-lg max-w-4xl max-h-[80vh] overflow-auto relative">
+    <div class="sticky top-0 bg-white p-4 border-b flex justify-between items-center">
+      <h3 class="text-lg font-semibold text-gray-800">Política de privacidad</h3>
+      <button id="privacy-close" class="text-gray-500 hover:text-gray-700 text-2xl font-bold">×</button>
+    </div>
+    <div class="p-6 text-sm text-gray-700 leading-relaxed">
+      <div class="space-y-4">
+        <p class="text-gray-600">Tutelkan reconoce la importancia de proteger la privacidad de la información que podamos obtener de nuestros visitantes "on-line". Por esta razón, nos comprometemos a dedicar nuestros mejores esfuerzos a respetar la privacidad de nuestros visitantes "on-line". Intentamos establecer un equilibrio entre nuestros intereses comerciales legítimos de obtener y utilizar la información recibida de usted y sobre usted, y sus expectativas razonables de privacidad, todo esto en el marco de la Ley Nº19.628 sobre Protección de la Vida Privada. A continuación explicamos de qué forma manejamos la información que obtenemos sobre usted en su visita a nuestra página web.</p>
+        
+        <div>
+          <h4 class="font-semibold text-gray-800 mb-2">1. Datos Colectivos</h4>
+          <p class="text-gray-600">Algunas páginas web de Tutelkan almacenan ciertas partes de información denominadas "cookies" en el PC del visitante. Estas "cookies" se remiten solamente a la página web que los almacenó cuando el usuario vuelve a acceder a esa página web. Las "cookies" pueden decirnos cómo y cuándo son visitadas las páginas web y por cuánta gente. Esta tecnología no almacena información personal identificable; la información se obtiene de forma agregada, no identificable. Con la información que obtenemos mediante esta tecnología, esperamos mejorar nuestras páginas web.</p>
+        </div>
+
+        <div>
+          <h4 class="font-semibold text-gray-800 mb-2">2. Información Personal Identificable</h4>
+          <p class="text-gray-600">Tutelkan almacena información personal identificable, como nombre, organización, dirección de correo electrónico y similar, solo con el consentimiento voluntario del visitante a la página web. Asimismo, le notificaremos del uso que haremos de esta información.</p>
+        </div>
+
+        <div>
+          <h4 class="font-semibold text-gray-800 mb-2">3. Enlaces con otras Páginas Web</h4>
+          <p class="text-gray-600">Como servicio de valor añadido a nuestros visitantes, Tutelkan ofrece enlaces con otras páginas web. Intentamos seleccionar cuidadosamente las páginas web que creemos son útiles y cumplen nuestros altos estándares. Sin embargo, debido a que las páginas web cambian muy rápidamente, no podemos garantizar estos estándares en todos los enlaces a páginas web que proporcionamos, ni aceptar responsabilidad alguna del contenido de las páginas web externas a Tutelkan.</p>
+        </div>
+
+        <div>
+          <h4 class="font-semibold text-gray-800 mb-2">4. Cambios</h4>
+          <p class="text-gray-600">Cualquier cambio en esta política de privacidad será comunicada oportunamente en esta misma página web.</p>
+        </div>
+
+        <div>
+          <h4 class="font-semibold text-gray-800 mb-2">5. Derechos de los Usuarios</h4>
+          <ul class="list-disc pl-6 space-y-2 text-gray-600">
+            <li>Solicitar acceso sobre los datos relativos a su persona, su procedencia y destinatario, el propósito del almacenamiento y la individualización de las personas u organismos a los cuales sus datos son transmitidos regularmente.</li>
+            <li>Solicitar la modificación o rectificación de sus datos personales cuando ellos sean erróneos, inexactos, equívocos o incompletos.</li>
+            <li>Solicitar la eliminación o cancelación de sus datos personales cuando su almacenamiento carezca de fundamento legal o se encuentren caducos, salvo que concurra alguna excepción legal.</li>
+            <li>Solicitar la suspensión temporal de cualquier operación de tratamiento de sus datos personales cuando el usuario haya proporcionado voluntariamente sus datos o ellos se usen para comunicaciones informativas y no desee continuar figurando en el registro respectivo de modo temporal o definitivo, o cuando la exactitud de los datos personales no pueda ser establecida o cuya vigencia sea dudosa y respecto de los cuales no corresponda la cancelación.</li>
+            <li>Oponerse a que sus datos personales sean utilizados para fines de publicidad, investigación de mercado o encuestas de opinión.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="sticky bottom-0 bg-white p-4 border-t text-center">
+      <button id="privacy-close-btn" class="bg-[#cf3339] text-white px-6 py-2 rounded-lg font-semibold hover:bg-[#b52d32] transition-colors">
+        Cerrar
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  function openTermsModal() {
+    document.getElementById('terms-modal').classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function openPrivacyModal() {
+    document.getElementById('privacy-modal').classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeTermsModal() {
+    document.getElementById('terms-modal').classList.add('hidden');
+    document.body.style.overflow = 'auto';
+  }
+
+  function closePrivacyModal() {
+    document.getElementById('privacy-modal').classList.add('hidden');
+    document.body.style.overflow = 'auto';
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const termsBtn = document.getElementById('terms-btn');
+    const termsClose = document.getElementById('terms-close');
+    const termsCloseBtn = document.getElementById('terms-close-btn');
+    const termsModal = document.getElementById('terms-modal');
+    const privacyBtn = document.getElementById('privacy-btn');
+    const privacyClose = document.getElementById('privacy-close');
+    const privacyCloseBtn = document.getElementById('privacy-close-btn');
+    const privacyModal = document.getElementById('privacy-modal');
+
+    if (termsBtn) {
+      termsBtn.addEventListener('click', openTermsModal);
+    }
+
+    if (termsClose) {
+      termsClose.addEventListener('click', closeTermsModal);
+    }
+
+    if (termsCloseBtn) {
+      termsCloseBtn.addEventListener('click', closeTermsModal);
+    }
+
+    if (termsModal) {
+      termsModal.addEventListener('click', function(e) {
+        if (e.target === termsModal) {
+          closeTermsModal();
+        }
+      });
+    }
+    if (privacyBtn) {
+      privacyBtn.addEventListener('click', openPrivacyModal);
+    }
+
+    if (privacyClose) {
+      privacyClose.addEventListener('click', closePrivacyModal);
+    }
+
+    if (privacyCloseBtn) {
+      privacyCloseBtn.addEventListener('click', closePrivacyModal);
+    }
+
+    if (privacyModal) {
+      privacyModal.addEventListener('click', function(e) {
+        if (e.target === privacyModal) {
+          closePrivacyModal();
+        }
+      });
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeTermsModal();
+        closePrivacyModal();
+      }
+    });
+  });
+</script>

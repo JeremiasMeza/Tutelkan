@@ -9,22 +9,27 @@ const links = [
 ];
 ---
 
-<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out bg-white">
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out bg-white dark:bg-gray-800">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-20">
-
-      <a href="/" class="flex items-center space-x-2">
-        <img src="/images/logo/images_logo_LogoTutelkan.png" alt="Tutelkan logo" class="h-10 w-auto" />
+      <!-- Logo -->
+      <a href="/" class="flex items-center space-x-2 flex-shrink-0">
+        <img 
+          src="/images/logo/images_logo_LogoTutelkan.png" 
+          alt="Tutelkan logo" 
+          class="h-8 sm:h-10 w-auto object-contain max-w-[120px] sm:max-w-none" 
+        />
       </a>
       
-      <div class="hidden md:block">
-        <ul class="flex items-center space-x-10">
+      <!-- Desktop Navigation -->
+      <div class="hidden lg:block">
+        <ul class="flex items-center space-x-6 xl:space-x-10">
           {links.map((link, index) => (
             <li>
               <a 
                 href={link.href} 
-                class={`text-lg font-medium transition-colors duration-200 hover:text-[#cf3339] ${
-                  index === 0 ? 'text-[#cf3339]' : 'text-gray-700'
+                class={`nav-link text-base xl:text-lg font-medium transition-colors duration-200 hover:text-[#cf3339] whitespace-nowrap ${
+                  index === 0 ? 'text-[#cf3339]' : 'text-gray-700 dark:text-gray-300'
                 }`}
               >
                 {link.label}
@@ -34,54 +39,62 @@ const links = [
         </ul>
       </div>
       
-      <div class="flex items-center space-x-5">
+      <!-- Desktop Actions -->
+      <div class="hidden lg:flex items-center space-x-5">
         <a 
           href="#contact" 
-          class="bg-[#cf3339] text-white px-7 py-3 rounded-full text-lg font-medium hover:bg-[#b52d32] transition-colors duration-200"
+          class="bg-[#cf3339] text-white px-7 py-3 rounded-full text-lg font-medium hover:bg-[#b52d32] transition-colors duration-200 whitespace-nowrap"
         >
           Conversemos
         </a>
         <ThemeToggle />
       </div>
       
-      <div class="md:hidden">
-        <button 
-          id="mobile-menu-button"
-          type="button" 
-          class="text-gray-700 hover:text-[#cf3339] focus:outline-none focus:text-[#cf3339]"
-          aria-controls="mobile-menu" 
-          aria-expanded="false"
-        >
-          <span class="sr-only">Abrir menú principal</span>
-          <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-          </svg>
-        </button>
-      </div>
+      <!-- Mobile Menu Button -->
+      <button 
+        id="mobile-menu-button"
+        type="button" 
+        class="lg:hidden text-gray-700 dark:text-gray-300 hover:text-[#cf3339] focus:outline-none focus:text-[#cf3339] transition-colors duration-200"
+        aria-controls="mobile-menu" 
+        aria-expanded="false"
+      >
+        <span class="sr-only">Abrir menú principal</span>
+        <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+      </button>
     </div>
   </div>
 
-  <div class="md:hidden hidden" id="mobile-menu">
-    <div class="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-gray-200">
+  <!-- Mobile Menu -->
+  <div class="lg:hidden hidden" id="mobile-menu">
+    <div class="px-4 pt-2 pb-3 space-y-1 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 shadow-lg">
       {links.map((link, index) => (
         <a 
           href={link.href} 
-          class={`block px-3 py-2 text-base font-medium transition-colors duration-200 hover:text-[#cf3339] ${
-            index === 0 ? 'text-[#cf3339]' : 'text-gray-700'
+          class={`nav-link block px-3 py-2 text-base font-medium transition-colors duration-200 hover:text-[#cf3339] hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md ${
+            index === 0 ? 'text-[#cf3339]' : 'text-gray-700 dark:text-gray-300'
           }`}
         >
           {link.label}
         </a>
       ))}
+      
+      <!-- Mobile Conversemos Button -->
       <a 
         href="#contact" 
-        class="block mx-3 mt-4 bg-[#cf3339] text-white px-4 py-2 rounded-full text-center text-base font-medium hover:bg-[#b52d32] transition-colors duration-200"
+        class="block w-full text-center bg-[#cf3339] text-white px-3 py-3 mt-4 rounded-full text-base font-medium hover:bg-[#b52d32] transition-colors duration-200"
       >
         Conversemos
       </a>
+      
+      <!-- Mobile Theme Toggle -->
+      <div class="flex items-center justify-between px-3 py-2 border-t border-gray-200 dark:border-gray-700 mt-4 pt-4">
+        <span class="text-base font-medium text-gray-700 dark:text-gray-300">Tema</span>
+        <ThemeToggle />
+      </div>
     </div>
   </div>
 </nav>
 
 <script src="/src/scripts/navbar.js"></script>
-<link rel="stylesheet" href="/src/styles/navbar.css">

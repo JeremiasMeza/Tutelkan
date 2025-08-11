@@ -1,9 +1,137 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { getEntry, getCollection } from 'astro:content';
+
+// helper para recortar texto
+const truncate = (str = "", n = 160) =>
+  str.length > n ? str.slice(0, n).trimEnd() + "…" : str;
+
+const page = await getEntry('pages', 'blog');
+const { Content: PageContent } = await page.render();
+
+const posts = (await getCollection('posts'))
+  .sort((a,b) => +new Date(b.data.pubDate) - +new Date(a.data.pubDate));
+
+// destacados marcados en Tina
+const markedFeatured = posts.filter(p => p.data.featured);
+
+// Fallback: si no hay marcados, toma los 2 más recientes
+const featuredSource = markedFeatured.length ? markedFeatured : posts;
+const featuredPosts = featuredSource.slice(0, 2);
+
+// Resto SIN repetir los destacados
+const featuredSlugs = new Set(featuredPosts.map(p => p.slug));
+const regularPosts = posts.filter(p => !featuredSlugs.has(p.slug));
 ---
-<Layout title="Blog">
+
+<Layout title={page.data.title}>
   <section class="max-w-screen-xl mx-auto px-4 py-20">
-    <h1 class="text-4xl font-bold text-center text-[#cf3339]">Blog</h1>
-    <p class="mt-4 text-center">Próximamente.</p>
+    <h1 class="text-4xl font-bold text-center text-[#cf3339] mb-2">{page.data.title}</h1>
+    {page.data.intro && <p class="text-center text-gray-600 mb-16">{page.data.intro}</p>}
+    <PageContent />
+
+    <!-- Destacados -->
+    {featuredPosts.length > 0 && (
+      <div class="mb-16">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b-2 border-gray-200 pb-2 inline-block">
+          Destacados
+        </h2>
+        <div class="grid lg:grid-cols-2 gap-8">
+          {featuredPosts.map((post) => (
+            <article class="bg-white border border-gray-200 hover:shadow-lg transition-shadow duration-300 cursor-pointer min-h-[180px]">
+              <a href={`/blog/${post.slug}/`} class="flex h-full">
+                <!-- Imagen izquierda -->
+                <div class="w-44 h-full flex-shrink-0 bg-gradient-to-br from-blue-400 to-purple-600 relative overflow-hidden">
+                  {post.data.heroImage ? (
+                    <img src={post.data.heroImage} alt={post.data.title} class="w-full h-full object-cover" />
+                  ) : (
+                    <div class="w-full h-full bg-gradient-to-br from-blue-400 to-purple-600 flex items-center justify-center">
+                      <svg class="w-12 h-12 text-white opacity-50" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd" />
+                      </svg>
+                    </div>
+                  )}
+                </div>
+
+                <!-- Contenido derecha -->
+                <div class="flex-1 p-6 flex flex-col justify-between">
+                  <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3 hover:text-[#cf3339] transition-colors">
+                      {post.data.title}
+                    </h3>
+                    {post.data.description && (
+                      <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                        {truncate(post.data.description, 220)}
+                      </p>
+                    )}
+                  </div>
+                  <div class="flex items-center justify-between mt-auto">
+                    <div class="flex items-center space-x-2">
+                      <img src="/favicon.ico" alt="Tutelkan" class="w-4 h-4" />
+                      <span class="text-sm font-medium text-[#cf3339]">Tutelkan</span>
+                    </div>
+                    <span class="text-sm text-gray-500">
+                      {new Date(post.data.pubDate).toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric' })}
+                    </span>
+                  </div>
+                </div>
+              </a>
+            </article>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <!-- Todas las publicaciones (sin duplicar destacados) -->
+    <div>
+      <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b-2 border-gray-200 pb-2 inline-block">Todas las publicaciones</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {regularPosts.map((post) => (
+          <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+            {post.data.heroImage && (
+              <div class="h-40 bg-gradient-to-br from-teal-400 to-blue-500 relative overflow-hidden">
+                <img src={post.data.heroImage} alt={post.data.title} class="w-full h-full object-cover" />
+              </div>
+            )}
+            <div class="p-5">
+              <h3 class="text-lg font-semibold text-gray-800 mb-3 line-clamp-2">
+                <a href={`/blog/${post.slug}/`} class="hover:text-[#cf3339] transition-colors">
+                  {post.data.title}
+                </a>
+              </h3>
+              {post.data.description && (
+                <p class="text-gray-600 text-sm mb-4">
+                  {truncate(post.data.description, 140)}
+                </p>
+              )}
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                  <img src="/favicon.ico" alt="Tutelkan" class="w-5 h-5 rounded-full" />
+                  <span class="text-xs font-medium text-[#cf3339]">Tutelkan</span>
+                </div>
+                <span class="text-xs text-gray-500">
+                  {new Date(post.data.pubDate).toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric' })}
+                </span>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
   </section>
 </Layout>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

@@ -21,13 +21,36 @@ html.dark .text-gray-900 {
 }
 
 html.dark .bg-white {
-  background-color: #1f2937;
+  background-color: #262726;
 }
 
 html.dark .bg-gray-50 {
-  background-color: #374151;
+  background-color: #292c2a;
 }
 
 html.dark .bg-gray-100 {
-  background-color: #4b5563;
+  background-color: #121212;
+}
+
+#theme-toggle {
+  aspect-ratio: 1;
+  min-width: 2.5rem;
+}
+
+@media (min-width: 640px) {
+  #theme-toggle {
+    min-width: 3rem;
+  }
+}
+
+#theme-toggle i {
+  will-change: transform, opacity;
+}
+
+#theme-toggle:hover {
+  transform: scale(1.05);
+}
+
+#theme-toggle:active {
+  transform: scale(0.95);
 }
