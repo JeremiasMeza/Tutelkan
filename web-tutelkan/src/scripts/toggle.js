@@ -1,17 +1,9 @@
-// Theme toggle functionality - optimized and simple
 document.addEventListener('DOMContentLoaded', () => {
   const themeToggle = document.getElementById('theme-toggle');
   const lightIcon = document.getElementById('theme-toggle-light');
   const darkIcon = document.getElementById('theme-toggle-dark');
   const html = document.documentElement;
-  
-  // Get theme from localStorage or default to light
-  const getTheme = () => {
-    return localStorage.getItem('theme') || 
-           (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-  };
-  
-  // Apply theme to document and update icons
+  const getTheme = () => localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
   const applyTheme = (theme) => {
     if (theme === 'dark') {
       html.classList.add('dark');
@@ -28,11 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     localStorage.setItem('theme', theme);
   };
-  
-  // Initialize theme on page load
   applyTheme(getTheme());
-  
-  // Toggle theme on button click
   if (themeToggle) {
     themeToggle.addEventListener('click', () => {
       const currentTheme = getTheme();

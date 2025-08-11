@@ -1,6 +1,13 @@
 @import "tailwindcss";
 @import 'bootstrap-icons/font/bootstrap-icons.css';
 
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  padding-top: 4rem;
+}
 
 .fade-section {
   opacity: 0;
